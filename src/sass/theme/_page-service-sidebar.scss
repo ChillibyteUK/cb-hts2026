@@ -1,0 +1,39 @@
+.service-sidebar {
+  h3 {
+    font-size: var(--fs-500);
+    line-height: var(--lh-500);
+    font-weight: var(--fw-600);
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  &__person {
+    img {
+      filter: grayscale(1);
+    }
+  }
+  &__person-name {
+    font-weight: var(--fw-600);
+  }
+  &__person-contact {
+    font-size: var(--fs-300);
+  }
+  a {
+    color: var(--col-brand-dark);
+    text-decoration: none;
+    transition: color var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      color: var(--col-brand-blue);
+    }
+  }
+}
