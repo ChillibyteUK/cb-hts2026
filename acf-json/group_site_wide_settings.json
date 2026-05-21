@@ -105,9 +105,9 @@
             "append": ""
         },
         {
-            "key": "field_68a763caba60a",
-            "label": "Directions URL",
-            "name": "directions_url",
+            "key": "field_6a0ef8e8d4313",
+            "label": "Facebook URL",
+            "name": "facebook_url",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -124,6 +124,55 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6a0ef902d4314",
+            "label": "Instagram URL",
+            "name": "instagram_url",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a0ef718faf06",
+            "label": "Footer Accreditations",
+            "name": "footer_accreditations",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "thumbnail"
         },
         {
             "key": "field_69f499a73b106",
@@ -335,5 +384,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1779284769
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1779366159
 }
