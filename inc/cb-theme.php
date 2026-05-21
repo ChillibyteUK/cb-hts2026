@@ -100,10 +100,9 @@ function widgets_init() {
 
     register_nav_menus(
         array(
-            'primary_nav'          => 'Primary Nav',
-            'footer_menu_services' => 'Footer Services',
-            'footer_menu_about'    => 'Footer About',
-            'footer_menu_legal'    => 'Footer Legal & Info',
+            'primary_nav'              => 'Primary Nav',
+            'footer_menu_products'     => 'Footer Products',
+            'footer_menu_applications' => 'Footer Applications',
         )
     );
 

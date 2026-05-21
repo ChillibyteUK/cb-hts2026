@@ -23,7 +23,7 @@ function cb_register_taxes() {
 		'publicly_queryable' => true,
 		'hierarchical'       => true,
 		'show_ui'            => true,
-		'show_in_nav_menus'  => true,
+		'show_in_nav_menus'  => false,
 		'show_tagcloud'      => false,
 		'show_in_quick_edit' => true,
 		'show_admin_column'  => true,

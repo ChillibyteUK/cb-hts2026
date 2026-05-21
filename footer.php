@@ -44,27 +44,31 @@ $instagram_url         = get_field( 'instagram_url', 'option' );
             </div>
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="footer-col-title">Products</div>
-                <ul class="footer-links">
-                    <li><a href="#products">Industrial Canopies</a></li>
-                    <li><a href="#products">Non-Insulated Buildings</a></li>
-                    <li><a href="#products">Insulated Buildings</a></li>
-                    <li><a href="#products">Sports Halls</a></li>
-                    <li><a href="#products">Manhattan Structures</a></li>
-                    <li><a href="#products">Custom Buildings</a></li>
-                    <li><a href="#configurator">3D Configurator</a></li>
-                </ul>
+                <?php
+                wp_nav_menu(
+                 array(
+                  'theme_location' => 'footer_menu_products',
+                  'container'      => false,
+                  'menu_class'     => 'footer-links',
+                  'fallback_cb'    => false,
+                  'depth'          => 1,
+                 )
+                );
+                ?>
             </div>
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="footer-col-title">Applications</div>
-                <ul class="footer-links">
-                    <li><a href="#applications">Logistics &amp; Loading</a></li>
-                    <li><a href="#applications">Warehousing</a></li>
-                    <li><a href="#applications">Manufacturing</a></li>
-                    <li><a href="#applications">Waste &amp; Recycling</a></li>
-                    <li><a href="#applications">Sports &amp; Leisure</a></li>
-                    <li><a href="#applications">Hospitality &amp; Retail</a></li>
-                    <li><a href="#applications">Film &amp; TV</a></li>
-                </ul>
+                <?php
+                wp_nav_menu(
+                 array(
+                  'theme_location' => 'footer_menu_applications',
+                  'container'      => false,
+                  'menu_class'     => 'footer-links',
+                  'fallback_cb'    => false,
+                  'depth'          => 1,
+                 )
+                );
+                ?>
             </div>
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="footer-col-title">Get in touch</div>
@@ -103,9 +107,9 @@ $instagram_url         = get_field( 'instagram_url', 'option' );
         <div class="footer-bottom d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between gap-3">
             <div class="footer-bottom-left">© 2026 HTS Industries Ltd. A division of HTS-Tentiq.</div>
             <div class="footer-bottom-right d-flex flex-column flex-sm-row gap-2 gap-sm-4">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Terms &amp; Conditions</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+                <a href="/cookie-policy/">Cookie Policy</a>
+                <a href="/terms-conditions/">Terms &amp; Conditions</a>
             </div>
         </div>
     </div>
