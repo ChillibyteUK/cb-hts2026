@@ -186,9 +186,9 @@ add_shortcode(
 /**
  * Grab the specified data like Thumbnail URL of a publicly embeddable video hosted on Vimeo.
  *
- * @param  str $video_id The ID of a Vimeo video.
- * @param  str $data      Video data to be fetched.
- * @return str            The specified data
+ * @param  string $video_id The ID of a Vimeo video.
+ * @param  string $data     Video data to be fetched.
+ * @return string           The specified data
  */
 function get_vimeo_data_from_id( $video_id, $data ) {
     // Width can be 100, 200, 295, 640, 960 or 1280.
@@ -1016,12 +1016,20 @@ add_action(
 		);
 	}
 );
-add_action( 'admin_footer', function() {
-	echo '<div id="cb-sideload-debug" style="position:fixed;bottom:5px;right:5px;background:#000;color:#0f0;padding:4px 8px;font-size:12px;z-index:999999;display:none;">CB SIDELOAD: ' . ( wp_script_is( 'cb-sideload-image', 'enqueued' ) ? 'ENQUEUED' : 'NOT ENQUEUED' ) . '</div>';
-}, 999 );
-add_action( 'admin_head', function() {
-	echo '<style>#cb-sideload-debug{display:' . ( isset( $_GET['cb_debug'] ) ? 'block' : 'none' ) . '}</style>';
-}, 999 );
+add_action(
+	'admin_footer',
+	function () {
+		echo '<div id="cb-sideload-debug" style="position:fixed;bottom:5px;right:5px;background:#000;color:#0f0;padding:4px 8px;font-size:12px;z-index:999999;display:none;">CB SIDELOAD: ' . ( wp_script_is( 'cb-sideload-image', 'enqueued' ) ? 'ENQUEUED' : 'NOT ENQUEUED' ) . '</div>';
+	},
+	999
+);
+add_action(
+	'admin_head',
+	function () {
+		echo '<style>#cb-sideload-debug{display:' . ( isset( $_GET['cb_debug'] ) ? 'block' : 'none' ) . '}</style>';
+	},
+	999
+);
 
 /**
  * Load, augment, and sanitize an SVG from attachment ID or local file path.
