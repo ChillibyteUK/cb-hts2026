@@ -84,7 +84,17 @@ $instagram_url         = get_field( 'instagram_url', 'option' );
                 <?php foreach ( $footer_accreditations as $badge ) { ?>
                     <?php if ( ! empty( $badge['ID'] ) ) { ?>
                         <div class="footer-accreditation">
-                            <?= wp_get_attachment_image( $badge['ID'], 'medium', false, array( 'class' => 'footer-accreditation-img', 'alt' => esc_attr( $badge['alt'] ) ) ); ?>
+                            <?=
+							wp_get_attachment_image(
+								$badge['ID'],
+								'medium',
+								false,
+								array(
+									'class' => 'footer-accreditation-img',
+									'alt'   => esc_attr( $badge['alt'] ),
+								)
+							);
+							?>
                         </div>
                     <?php } ?>
                 <?php } ?>
