@@ -22343,11 +22343,6 @@ strong {
 #wrapper-navbar .navbar-nav .nav-link:hover, #wrapper-navbar .navbar-nav .nav-link:focus-visible {
   color: var(--col-orange);
 }
-#wrapper-navbar .current-menu-item > .nav-link,
-#wrapper-navbar .current-menu-parent > .nav-link,
-#wrapper-navbar .current-menu-ancestor > .nav-link {
-  color: var(--col-orange);
-}
 #wrapper-navbar .nav-cta .btn {
   padding: 13px 22px;
   font-size: var(--fs-micro);
