@@ -1,0 +1,164 @@
+/* =========================
+   CB Products Grid
+   ========================= */
+
+.products {
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-paper);
+
+  .products-header {
+    margin-block-end: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .products-headline {
+    color: var(--col-navy);
+    max-width: 600px;
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--col-white);
+  border: 1px solid var(--col-rule);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &-img-wrap {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+    background: var(--col-navy);
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+  }
+
+  &-tag {
+    position: absolute;
+    inset-block-start: 1.125rem;
+    inset-inline-start: 1.125rem;
+    z-index: 2;
+    padding: 0.375rem 0.75rem;
+    background: var(--col-white);
+    color: var(--col-navy);
+    font-size: 0.625rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    line-height: var(--lh-flat);
+  }
+
+  &-num {
+    position: absolute;
+    inset-block-start: 1.125rem;
+    inset-inline-end: 1.125rem;
+    z-index: 2;
+    inline-size: 2rem;
+    block-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(15, 27, 51, 0.6);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: var(--fw-bold);
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem 1.75rem;
+  }
+
+  &-title {
+    margin-block-end: 0.75rem;
+    font-size: var(--fs-h5);
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--col-navy);
+  }
+
+  &-desc {
+    flex: 1;
+    margin-block-end: 1.5rem;
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-relaxed);
+    color: var(--col-muted);
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-block-start: 1.125rem;
+    border-block-start: 1px solid var(--col-rule);
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    color: var(--col-navy);
+    transition: color 0.2s ease;
+
+    svg {
+      inline-size: 0.875rem;
+      block-size: 0.875rem;
+      transition: transform 0.25s ease;
+    }
+  }
+
+  /* Interactive only when post has body content. */
+  &.product-card--linked {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 1.5rem 3.75rem rgba(15, 27, 51, 0.12);
+    }
+
+    &:hover .product-card-img {
+      transform: scale(1.04);
+    }
+
+    &:hover .product-card-link {
+      color: var(--col-orange);
+    }
+
+    &:hover .product-card-link svg {
+      transform: translateX(6px);
+    }
+  }
+}

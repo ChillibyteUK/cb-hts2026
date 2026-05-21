@@ -9,63 +9,67 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
 ?>
 <div id="footer-top"></div>
-
-<footer class="footer pt-5 pb-4">
+<!-- FOOTER -->
+<footer>
     <div class="container">
-        <div class="row pb-4 g-4">
-			<div class="col-12 col-md-2">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/sis-logo-wo.png' ); ?>" alt="Strategic Insurance Services logo" class="footer__logo">
-			</div>
-			<div class="col-12 col-md-4">
-				<div class="mb-4">
-					Strategic Insurance Services Limited<br>
-					Shoreham-by-Sea<br>
-					United Kingdom
-				</div>
-				<div>
-					T: <a href="tel:<?= esc_attr( parse_phone( get_field( 'contact_phone', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( get_field( 'contact_phone', 'option' ) ); ?></a><br>
-					E: <a href="mailto:<?= esc_attr( antispambot( get_field( 'contact_email', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( antispambot( get_field( 'contact_email', 'option' ) ) ); ?></a><br>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-					<a href="<?= esc_url( get_field( 'linkedin_url', 'option' ) ); ?>" target="_blank" class="footer__contact">Find us on LinkedIn</a>
-				</div>
-			</div>
-			<div class="col-12 col-sm-6 col-md-3">
-				<?=
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer_menu_services',
-						'menu_class'     => 'footer__menu',
-					)
-				);
-				?>
-			</div>
-            <div class="col-12 col-sm-6 col-md-3">
-				<?=
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer_menu_about',
-						'menu_class'     => 'footer__menu mb-4',
-					)
-				);
-				?>
-				<?=
-				wp_nav_menu(
-					array(
-						'theme_location' => 'footer_menu_legal',
-						'menu_class'     => 'footer__menu',
-					)
-				);
-				?>
-			</div>
-		</div>
-	</div>
-
-	<div class="container pt-4 footer__colophon">
-		&copy; <?= esc_html( gmdate( 'Y' ) ); ?> Strategic Insurance Services Limited<br>
-		<?= wp_kses_post( get_field( 'colophon', 'option' ) ); ?>
-	</div>
+    <div class="footer-top">
+        <div>
+        <img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/HTS_Logo_White.png' ); ?>" alt="HTS Industries" class="footer-logo-img">
+        <p class="footer-tagline">Premium temporary and semi-permanent modular structures for industry and commerce. A division of HTS-Tentiq — German-engineered, UK-installed since 2002.</p>
+        <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+        </div>
+        <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+            <li><a href="#products">Industrial Canopies</a></li>
+            <li><a href="#products">Non-Insulated Buildings</a></li>
+            <li><a href="#products">Insulated Buildings</a></li>
+            <li><a href="#products">Sports Halls</a></li>
+            <li><a href="#products">Manhattan Structures</a></li>
+            <li><a href="#products">Custom Buildings</a></li>
+            <li><a href="#configurator">3D Configurator</a></li>
+        </ul>
+        </div>
+        <div>
+        <div class="footer-col-title">Applications</div>
+        <ul class="footer-links">
+            <li><a href="#applications">Logistics &amp; Loading</a></li>
+            <li><a href="#applications">Warehousing</a></li>
+            <li><a href="#applications">Manufacturing</a></li>
+            <li><a href="#applications">Waste &amp; Recycling</a></li>
+            <li><a href="#applications">Sports &amp; Leisure</a></li>
+            <li><a href="#applications">Hospitality &amp; Retail</a></li>
+            <li><a href="#applications">Film &amp; TV</a></li>
+        </ul>
+        </div>
+        <div>
+        <div class="footer-col-title">Get in touch</div>
+        <div class="footer-contact-item">
+            <div class="label">Phone</div>
+			<a href="tel:<?= esc_attr( parse_phone( get_field( 'contact_phone', 'option' ) ) ); ?>"><?= esc_html( get_field( 'contact_phone', 'option' ) ); ?></a>
+        </div>
+        <div class="footer-contact-item">
+            <div class="label">Email</div>
+			<a href="mailto:<?= esc_attr( antispambot( get_field( 'contact_email', 'option' ) ) ); ?>"><?= esc_html( antispambot( get_field( 'contact_email', 'option' ) ) ); ?></a>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:8px;width:100%;justify-content:center">Request a quote</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">© 2026 HTS Industries Ltd. A division of HTS-Tentiq.</div>
+        <div class="footer-bottom-right">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        </div>
+    </div>
+    </div>
 </footer>
 <?php wp_footer(); ?>
 </body>

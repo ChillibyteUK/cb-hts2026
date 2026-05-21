@@ -1,0 +1,47 @@
+{
+  "key": "group_cb_applications_grid",
+  "title": "CB Applications Grid",
+  "fields": [
+    {
+      "key": "field_cb_applications_grid_title",
+      "label": "CB Applications Grid",
+      "name": "title",
+      "type": "message"
+    },
+    {
+      "key": "field_cb_applications_grid_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "field_cb_applications_grid_headline",
+      "label": "Headline",
+      "name": "headline",
+      "instructions": "Wrap emphasised text in a &lt;span&gt; to render it italic + orange.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 3
+    },
+    {
+      "key": "field_cb_applications_grid_lede",
+      "label": "Text content",
+      "name": "lede",
+      "type": "wysiwyg",
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-applications-grid"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": ""
+}

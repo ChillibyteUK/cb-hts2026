@@ -25,16 +25,19 @@ if ( session_status() === PHP_SESSION_NONE ) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1">
 
 	<link rel="preload"
+		href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-regular.woff2' ); ?>"
+		as="font" type="font/woff2" crossorigin="anonymous">
+	<link rel="preload"
         href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-500.woff2' ); ?>"
         as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload"
-        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-regular.woff2' ); ?>"
+        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-600.woff2' ); ?>"
         as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload"
-        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/manrope-v20-latin-500.woff2' ); ?>"
+        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-700.woff2' ); ?>"
         as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload"
-        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/manrope-v20-latin-600.woff2' ); ?>"
+        href="<?= esc_url( get_stylesheet_directory_uri() . '/fonts/inter-v20-latin-800.woff2' ); ?>"
         as="font" type="font/woff2" crossorigin="anonymous">
 	
     <?php
@@ -109,35 +112,60 @@ if ( session_status() === PHP_SESSION_NONE ) {
     	}
 	}
 	?>
-<header id="wrapper-navbar" class="fixed-top">
-	<nav class="navbar navbar-expand-lg container">
-		<div class="d-flex px-4 px-md-5 gap-4 w-100 w-xl-auto">
-            <div class="d-flex justify-content-between w-100 w-lg-auto align-items-center py-0">
-                <a href="/" class="site-logo" aria-label="Strategic Insurance Services Homepage">
-					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/sis-logo-full-wo.png' ); ?>" alt="Strategic Insurance Services" height="45">
-				</a>
-				</div>
-                <button class="navbar-toggler align-self-center" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-				<!-- Navigation -->
+<!-- UTILITY -->
+<div class="utility fs-caption">
+	<div class="container">
+		<div class="d-flex justify-content-between align-items-center">
+			<div class="d-flex align-items-center gap-2">
+				<span class="utility-pill">Live Build</span>
+				<span>Currently delivering 4 UK structures this month — average lead time 11 days</span>
+			</div>
+			<div class="d-flex align-items-center gap-4 fw-medium">
+				<a href="tel:<?= esc_attr( parse_phone( get_field( 'contact_phone', 'option' ) ) ); ?>"><?= esc_html( get_field( 'contact_phone', 'option' ) ); ?></a>
+				<div class="vr"></div>
+				<a href="mailto:<?= esc_attr( antispambot( get_field( 'contact_email', 'option' ) ) ); ?>"><?= esc_html( antispambot( get_field( 'contact_email', 'option' ) ) ); ?></a>
+				<div class="vr"></div>
+				<a href="https://hts-tentiq.com/eu-en/" target="_blank" rel="noopener">HTS-Tentiq Global ↗</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- PRIMARY NAV -->
+<header id="wrapper-navbar" class="sticky-top">
+	<nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+		<div class="container">
+			<a class="navbar-brand" href="<?= esc_url( home_url( '/' ) ); ?>" aria-label="HTS Industries home">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/HTS_Logo.png' ); ?>"
+					alt="HTS Industries" height="40" width="auto">
+			</a>
+
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#primary-navbar"
+				aria-controls="primary-navbar" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="fas fa-bars" aria-hidden="true"></i>
+			</button>
+
+			<div id="primary-navbar" class="collapse navbar-collapse">
 				<?php
 				wp_nav_menu(
 					array(
 						'theme_location' => 'primary_nav',
 						'container'      => false,
-						'menu_class'     => 'navbar-nav w-100 justify-content-end gap-4 me-4',
+						'menu_class'     => 'navbar-nav mx-lg-auto align-items-lg-center',
 						'fallback_cb'    => '',
-						'depth'          => 3,
+						'depth'          => 1,
 						'walker'         => new Understrap_WP_Bootstrap_Navwalker(),
 					)
 				);
 				?>
-            </div>
+
+				<div class="nav-cta d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 mt-3 mt-lg-0">
+					<a href="#configurator" class="btn btn-outline-dark">Start Designing</a>
+					<a href="#contact" class="btn btn-primary">Get an Estimate</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 </header>

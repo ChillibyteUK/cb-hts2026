@@ -1,0 +1,95 @@
+{
+  "key": "group_cb_marquee_stats",
+  "title": "CB Marquee Stats",
+  "fields": [
+    {
+      "key": "field_cb_marqeuee_stats_title",
+      "label": "CB Marquee Stats",
+      "name": "title",
+      "type": "message"
+    },
+    {
+      "key": "field_cb_marquee_stats_items",
+      "label": "Items",
+      "name": "items",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add item",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_cb_marquee_stats_items_stat",
+          "label": "Stat",
+          "name": "stat",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "e.g. \"500+\", \"&lt;14\", \"10yr\"",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "30",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_cb_marquee_stats_items"
+        },
+        {
+          "key": "field_cb_marquee_stats_items_title",
+          "label": "Title",
+          "name": "title",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "e.g. \"UK Structures Installed\"",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "70",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_cb_marquee_stats_items"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-marquee-stats"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

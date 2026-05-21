@@ -21,123 +21,117 @@
     "color": {
       "palette": [
         {
+          "name": "navy",
+          "slug": "navy",
+          "color": "#003C82",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-deep",
+          "slug": "navy-deep",
+          "color": "#002558",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-80",
+          "slug": "navy-80",
+          "color": "#1A4D94",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-60",
+          "slug": "navy-60",
+          "color": "#416E94",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-25",
+          "slug": "navy-25",
+          "color": "#8296AA",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-10",
+          "slug": "navy-10",
+          "color": "#C2D0D9",
+          "origin": "theme"
+        },
+        {
+          "name": "navy-5",
+          "slug": "navy-5",
+          "color": "#EEF2F6",
+          "origin": "theme"
+        },
+        {
+          "name": "dark-grey",
+          "slug": "dark-grey",
+          "color": "#3C3C3C",
+          "origin": "theme"
+        },
+        {
+          "name": "orange",
+          "slug": "orange",
+          "color": "#E86820",
+          "origin": "theme"
+        },
+        {
+          "name": "orange-bright",
+          "slug": "orange-bright",
+          "color": "#FF7A2A",
+          "origin": "theme"
+        },
+        {
+          "name": "orange-15",
+          "slug": "orange-15",
+          "color": "#FADED0",
+          "origin": "theme"
+        },
+        {
+          "name": "ink",
+          "slug": "ink",
+          "color": "#0B1220",
+          "origin": "theme"
+        },
+        {
+          "name": "body",
+          "slug": "body",
+          "color": "#374151",
+          "origin": "theme"
+        },
+        {
+          "name": "muted",
+          "slug": "muted",
+          "color": "#6B7280",
+          "origin": "theme"
+        },
+        {
+          "name": "rule",
+          "slug": "rule",
+          "color": "#D1D5DB",
+          "origin": "theme"
+        },
+        {
+          "name": "light-border",
+          "slug": "light-border",
+          "color": "#E5E7EB",
+          "origin": "theme"
+        },
+        {
+          "name": "paper",
+          "slug": "paper",
+          "color": "#F4F1EC",
+          "origin": "theme"
+        },
+        {
+          "name": "section-bg",
+          "slug": "section-bg",
+          "color": "#EEF2F6",
+          "origin": "theme"
+        },
+        {
           "name": "white",
           "slug": "white",
-          "color": "#ffffff",
-          "origin": "theme"
-        },
-        {
-          "name": "white-020",
-          "slug": "white-020",
-          "color": "hsla(0 0% 100% / 0.2)",
-          "origin": "theme"
-        },
-        {
-          "name": "black",
-          "slug": "black",
-          "color": "#020202",
-          "origin": "theme"
-        },
-        {
-          "name": "black-010",
-          "slug": "black-010",
-          "color": "hsla(0 0% 1% / 0.05)",
-          "origin": "theme"
-        },
-        {
-          "name": "black-020",
-          "slug": "black-020",
-          "color": "hsla(0 0% 1% / 0.2)",
-          "origin": "theme"
-        },
-        {
-          "name": "blue-400",
-          "slug": "blue-400",
-          "color": "#2a5fac",
-          "origin": "theme"
-        },
-        {
-          "name": "blue-500",
-          "slug": "blue-500",
-          "color": "#0055a5",
-          "origin": "theme"
-        },
-        {
-          "name": "blue-600",
-          "slug": "blue-600",
-          "color": "#224d92",
-          "origin": "theme"
-        },
-        {
-          "name": "blue-700",
-          "slug": "blue-700",
-          "color": "#183975",
-          "origin": "theme"
-        },
-        {
-          "name": "blue-900",
-          "slug": "blue-900",
-          "color": "#0f2142",
-          "origin": "theme"
-        },
-        {
-          "name": "brand-blue",
-          "slug": "brand-blue",
-          "color": "hsl(var(--hsl-brand-blue))",
-          "origin": "theme"
-        },
-        {
-          "name": "brand-dark",
-          "slug": "brand-dark",
-          "color": "#1f2a37",
-          "origin": "theme"
-        },
-        {
-          "name": "brand-darkest",
-          "slug": "brand-darkest",
-          "color": "hsl(var(--hsl-brand-darkest))",
-          "origin": "theme"
-        },
-        {
-          "name": "orange-400",
-          "slug": "orange-400",
-          "color": "hsl(var(--hsl-orange-400))",
-          "origin": "theme"
-        },
-        {
-          "name": "green-400",
-          "slug": "green-400",
-          "color": "hsl(var(--hsl-green-400))",
-          "origin": "theme"
-        },
-        {
-          "name": "violet-400",
-          "slug": "violet-400",
-          "color": "hsl(var(--hsl-violet-400))",
-          "origin": "theme"
-        },
-        {
-          "name": "purple-400",
-          "slug": "purple-400",
-          "color": "hsl( var(--hsl-purple-400) )",
-          "origin": "theme"
-        },
-        {
-          "name": "brown-400",
-          "slug": "brown-400",
-          "color": "hsl( var(--hsl-brown-400) )",
-          "origin": "theme"
-        },
-        {
-          "name": "secondary-dark",
-          "slug": "secondary-dark",
-          "color": "#4b5563",
-          "origin": "theme"
-        },
-        {
-          "name": "secondary-light",
-          "slug": "secondary-light",
-          "color": "#6b7280",
+          "color": "#FFFFFF",
           "origin": "theme"
         }
       ]
@@ -145,74 +139,119 @@
     "typography": {
       "fontSizes": [
         {
+          "name": "hero",
+          "slug": "hero",
+          "size": "clamp(48px, 4.2vw + 32px, 80px)"
+        },
+        {
+          "name": "h1",
+          "slug": "h1",
+          "size": "clamp(40px, 3.2vw + 24px, 64px)"
+        },
+        {
+          "name": "h2",
+          "slug": "h2",
+          "size": "clamp(36px, 2.6vw + 22px, 54px)"
+        },
+        {
+          "name": "h3",
+          "slug": "h3",
+          "size": "clamp(32px, 1.6vw + 22px, 42px)"
+        },
+        {
+          "name": "h4",
+          "slug": "h4",
+          "size": "28px"
+        },
+        {
+          "name": "h5",
+          "slug": "h5",
+          "size": "24px"
+        },
+        {
+          "name": "h6",
+          "slug": "h6",
+          "size": "22px"
+        },
+        {
+          "name": "card-title",
+          "slug": "card-title",
+          "size": "20px"
+        },
+        {
+          "name": "stat-xl",
+          "slug": "stat-xl",
+          "size": "clamp(36px, 2.2vw + 24px, 48px)"
+        },
+        {
+          "name": "stat-lg",
+          "slug": "stat-lg",
+          "size": "34px"
+        },
+        {
+          "name": "stat-md",
+          "slug": "stat-md",
+          "size": "32px"
+        },
+        {
+          "name": "lede",
+          "slug": "lede",
+          "size": "20px"
+        },
+        {
+          "name": "body-lg",
+          "slug": "body-lg",
+          "size": "18px"
+        },
+        {
           "name": "body",
           "slug": "body",
-          "size": "var(--fs-400)"
+          "size": "17px"
         },
         {
-          "name": "100",
-          "slug": "100",
-          "size": "0.666rem"
+          "name": "body-md",
+          "slug": "body-md",
+          "size": "16px"
         },
         {
-          "name": "200",
-          "slug": "200",
-          "size": "0.875rem"
+          "name": "body-sm",
+          "slug": "body-sm",
+          "size": "15px"
         },
         {
-          "name": "300",
-          "slug": "300",
-          "size": "1rem"
+          "name": "body-xs",
+          "slug": "body-xs",
+          "size": "14px"
         },
         {
-          "name": "400",
-          "slug": "400",
-          "size": "1.05rem"
+          "name": "meta",
+          "slug": "meta",
+          "size": "13px"
         },
         {
-          "name": "500",
-          "slug": "500",
-          "size": "clamp(1.05rem, 0.29vw + 0.99rem, 1.25rem)"
+          "name": "caption",
+          "slug": "caption",
+          "size": "12px"
         },
         {
-          "name": "600",
-          "slug": "600",
-          "size": "clamp(1.25rem, 0.54vw + 1.14rem, 1.625rem)"
+          "name": "micro",
+          "slug": "micro",
+          "size": "11px"
         },
         {
-          "name": "700",
-          "slug": "700",
-          "size": "clamp(1.5rem, 0.71vw + 1.36rem, 2rem)"
+          "name": "nano",
+          "slug": "nano",
+          "size": "10px"
         },
         {
-          "name": "800",
-          "slug": "800",
-          "size": "clamp(1.5rem, 1.07vw + 1.29rem, 2.25rem)"
+          "name": "decor-lg",
+          "slug": "decor-lg",
+          "size": "120px"
         },
         {
-          "name": "900",
-          "slug": "900",
-          "size": "clamp(2rem, 2.21vw + 1.48rem, 3.25rem)"
-        },
-        {
-          "name": "1000",
-          "slug": "1000",
-          "size": "clamp(2.75rem, 4vw, 3.75rem)"
-        },
-        {
-          "name": "50",
-          "slug": "50",
-          "size": "var(--fs-100)"
-        },
-        {
-          "name": "850",
-          "slug": "850",
-          "size": "var(--fs-800)"
-        },
-        {
-          "name": "875",
-          "slug": "875",
-          "size": "var(--fs-900)"
+          "name": "decor-xl",
+          "slug": "decor-xl",
+          "size": "280px"
         }
       ]
     }

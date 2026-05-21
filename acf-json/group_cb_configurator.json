@@ -1,0 +1,73 @@
+{
+  "key": "group_cb_configurator",
+  "title": "CB Configurator",
+  "fields": [
+    {
+      "key": "field_cb_configurator_title",
+      "label": "CB Configurator",
+      "name": "title",
+      "type": "message"
+    },
+    {
+      "key": "field_cb_configurator_tag",
+      "label": "Tag",
+      "name": "tag",
+      "instructions": "Small pill above the headline, e.g. \u201cOnline 3D Configurator\u201d.",
+      "type": "text"
+    },
+    {
+      "key": "field_cb_configurator_headline",
+      "label": "Headline",
+      "name": "headline",
+      "instructions": "Wrap emphasised text in a &lt;span&gt; to render it italic + orange.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 3
+    },
+    {
+      "key": "field_cb_configurator_intro",
+      "label": "Intro",
+      "name": "intro",
+      "type": "wysiwyg",
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_cb_configurator_features",
+      "label": "Features",
+      "name": "features",
+      "instructions": "One per line. Inline &lt;strong&gt; / &lt;em&gt; allowed.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 6
+    },
+    {
+      "key": "field_cb_configurator_cta",
+      "label": "CTA",
+      "name": "cta",
+      "instructions": "Link to the configurator.",
+      "type": "link",
+      "return_format": "array"
+    },
+    {
+      "key": "field_cb_configurator_image",
+      "label": "Image",
+      "name": "image",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "medium"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-configurator"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": ""
+}

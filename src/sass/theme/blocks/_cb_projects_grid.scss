@@ -1,0 +1,137 @@
+.projects {
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-white);
+
+  .projects-header {
+    margin-block-end: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .projects-headline {
+    max-inline-size: 40rem;
+    color: var(--col-navy);
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  .projects-mosaic {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 17.5rem;
+    gap: 0.875rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 15rem;
+    }
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 14rem;
+    }
+  }
+}
+
+.proj-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  background: var(--col-navy);
+  color: var(--col-white);
+  text-decoration: none;
+
+  &--hero {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+
+  &--std {
+    grid-column: span 2;
+  }
+
+  &--wide {
+    grid-column: span 4;
+  }
+
+  @media (max-width: 992px) {
+    &--hero,
+    &--std,
+    &--wide {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+
+  &-img {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.85;
+    transition:
+      transform 0.6s ease,
+      opacity 0.3s ease;
+  }
+
+  &-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 19, 38, 0.95) 0%,
+      transparent 60%
+    );
+  }
+
+  &-body {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 1;
+    padding: 1.75rem;
+  }
+
+  &-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-block-end: 0.5rem;
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    color: var(--col-orange-bright);
+
+    &::before {
+      content: "";
+      inline-size: 1.125rem;
+      block-size: 1px;
+      background: currentColor;
+    }
+  }
+
+  &-title {
+    color: var(--col-white);
+    font-size: var(--fs-h6);
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  &--hero .proj-card-title {
+    font-size: clamp(1.625rem, 3vw, 2.125rem);
+    letter-spacing: -0.02em;
+  }
+
+  &--wide .proj-card-title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+
+  &--linked:hover .proj-card-img {
+    transform: scale(1.04);
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "key": "group_cb_steps",
+  "title": "CB Steps",
+  "fields": [
+    {
+      "key": "field_cb_steps_message",
+      "label": "CB Steps",
+      "name": "",
+      "aria-label": "",
+      "type": "message",
+      "message": "Header content is editable. Step numbers, icons, and titles are fixed; only the step body copy can be changed.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+    {
+      "key": "field_cb_steps_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_cb_steps_headline",
+      "label": "Headline",
+      "name": "headline",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Wrap highlighted text in &lt;span&gt;.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 2,
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_cb_steps_intro",
+      "label": "Intro",
+      "name": "intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_cb_steps_steps",
+      "label": "Step Bodies",
+      "name": "steps",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Add five rows in order. Only the body copy is editable.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "pagination": 0,
+      "min": 5,
+      "max": 5,
+      "collapsed": "",
+      "button_label": "Add Step Body",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_cb_steps_step_body",
+          "label": "Body",
+          "name": "body",
+          "aria-label": "",
+          "type": "textarea",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "rows": 3,
+          "placeholder": "",
+          "new_lines": "br"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-steps"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

@@ -1,0 +1,115 @@
+.why-split {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-section-bg);
+  color: var(--col-ink);
+
+  &::before {
+    content: "WHY";
+    position: absolute;
+    inset-block-start: clamp(2rem, 7vw, 5rem);
+    inset-inline-end: clamp(-3.5rem, -2vw, -1.5rem);
+    font-size: clamp(6rem, 19vw, 17.5rem);
+    font-weight: var(--fw-heavy);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: rgba(0, 60, 130, 0.04);
+    pointer-events: none;
+  }
+
+  .container,
+  .row {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-headline {
+    margin-block-end: 1.5rem;
+    color: var(--col-navy);
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  &-copy,
+  &-reason-body {
+    color: var(--col-body);
+  }
+
+  &-copy {
+    max-inline-size: 28rem;
+    margin-block-end: 2.25rem;
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-relaxed);
+  }
+
+  &-stats {
+    padding-block-start: 1.75rem;
+    border-block-start: 1px solid var(--col-navy-25);
+  }
+
+  &-stat-value {
+    margin-block-end: 0.5rem;
+    color: var(--col-navy);
+    line-height: 1;
+    font-weight: var(--fw-bold);
+
+    sup {
+      position: relative;
+      top: -0.75em;
+      font-size: 0.55em;
+      color: var(--col-orange);
+      vertical-align: baseline;
+      margin-inline-start: 0.05em;
+      font-weight: var(--fw-bold);
+    }
+  }
+
+  &-stat-label {
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    color: var(--col-muted);
+    line-height: 1.5;
+  }
+
+  &-reasons {
+    border-block-start: 1px solid var(--col-navy-25);
+  }
+
+  &-reason {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    padding-block: 1.75rem;
+    border-block-end: 1px solid var(--col-navy-25);
+    transition: transform 0.25s ease;
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+
+  &-reason-num {
+    padding-block-start: 0.2rem;
+    font-size: var(--fs-body-sm);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.04em;
+    color: var(--col-orange);
+  }
+
+  &-reason-title {
+    margin-block-end: 0.5rem;
+    color: var(--col-navy);
+  }
+
+  &-reason-body {
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-relaxed);
+  }
+}

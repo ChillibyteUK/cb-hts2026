@@ -1,0 +1,217 @@
+/* =========================
+   HERO — split layout, white bg, tick-list bullets
+   ========================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 80px 96px;
+  background: var(--col-white);
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- Meta strip --- */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--col-muted);
+
+  // Divider rendered as a pseudo before every item except the first
+  li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  li + li::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--col-rule);
+  }
+}
+
+/* --- Headline --- */
+.hero-h1 {
+  margin: 0 0 28px;
+  color: var(--col-navy);
+
+  font-family: var(--ff-base);
+  font-weight: var(--fw-heavy);
+  font-size: var(--fs-hero);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+
+  .accent {
+    color: var(--col-orange);
+    font-style: italic;
+    font-weight: var(--fw-bold);
+  }
+
+  .underline {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 6px 0;
+      height: 8px;
+      background: rgba(232, 104, 32, 0.8);
+      z-index: -1;
+    }
+  }
+}
+
+/* --- Lede --- */
+.hero-lede {
+  max-width: 520px;
+  margin: 0 0 32px;
+  color: var(--col-body);
+
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+
+  strong {
+    color: var(--col-ink);
+    font-weight: var(--fw-semibold);
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* --- Bullets --- */
+.hero-bullets {
+  --hero-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 36px;
+  padding-left: 22px;
+  border-left: 2px solid var(--col-orange);
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--col-body);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-snug-prose);
+
+    // Check icon as a masked pseudo so it inherits colour from currentColor logic
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      background-color: var(--col-orange);
+      mask-image: var(--hero-check);
+      -webkit-mask-image: var(--hero-check);
+      mask-size: contain;
+      -webkit-mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+    }
+
+    strong {
+      color: var(--col-ink);
+      font-weight: var(--fw-semibold);
+    }
+  }
+}
+
+/* --- Actions --- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- Visual side --- */
+.hero-visual {
+  position: relative;
+}
+
+.hero-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--col-navy);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* --- Badge --- */
+.hero-badge {
+  position: absolute;
+  left: 24px;
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: var(--col-white);
+  border-left: 3px solid var(--col-orange);
+  border-radius: 6px;
+  box-shadow: 0 14px 40px rgba(0, 60, 130, 0.16);
+}
+
+.hero-badge-num {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-heavy);
+  font-size: var(--fs-stat-lg);
+  line-height: var(--lh-flat);
+  letter-spacing: var(--ls-tight);
+  color: var(--col-navy);
+
+  sup {
+    position: relative;
+    top: -0.75em;
+    color: var(--col-orange);
+    font-size: 0.55em;
+    font-weight: var(--fw-bold);
+    vertical-align: baseline;
+    margin-left: 0.05em;
+  }
+}
+
+.hero-badge-label {
+  color: var(--col-muted);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  line-height: var(--lh-label);
+}

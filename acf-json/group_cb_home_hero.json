@@ -1,0 +1,307 @@
+{
+    "key": "group_cb_home_hero",
+    "title": "CB Home Hero",
+    "fields": [
+        {
+            "key": "field_cb_home_hero_title",
+            "label": "CB Home Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_cb_home_hero_meta_items",
+            "label": "Meta items",
+            "name": "meta_items",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One item per line. Rendered as a meta strip with dividers between items.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": "",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cb_home_hero_h1_line1_text",
+            "label": "H1 — line 1 text",
+            "name": "h1_line1_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. \"Built in \" (include trailing space if needed).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_h1_line1_highlight",
+            "label": "H1 — line 1 highlight",
+            "name": "h1_line1_highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Wrapped automatically in the underline style. e.g. \"14 days.\"",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_h1_line2_text",
+            "label": "H1 — line 2 text",
+            "name": "h1_line2_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. \"Engineered for \" (include trailing space if needed).",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_h1_line2_highlight",
+            "label": "H1 — line 2 highlight",
+            "name": "h1_line2_highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Wrapped automatically in the orange italic accent style. e.g. \"decades.\"",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_lede",
+            "label": "Lede",
+            "name": "lede",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0,
+            "default_value": ""
+        },
+        {
+            "key": "field_cb_home_hero_bullets",
+            "label": "Bullets",
+            "name": "bullets",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "One bullet per line. &lt;strong&gt; and &lt;em&gt; are allowed for inline emphasis.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "rows": 6,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_cb_home_hero_cta_primary",
+            "label": "Primary CTA",
+            "name": "cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_cb_home_hero_cta_secondary",
+            "label": "Secondary CTA",
+            "name": "cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_cb_home_hero_image",
+            "label": "Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_cb_home_hero_badge_number",
+            "label": "Badge number",
+            "name": "badge_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "e.g. \"500\"",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_badge_suffix",
+            "label": "Badge suffix",
+            "name": "badge_suffix",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Rendered in superscript. e.g. \"+\"",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cb_home_hero_badge_label",
+            "label": "Badge label",
+            "name": "badge_label",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Newlines become line breaks.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "br"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/cb-home-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1779280386
+}

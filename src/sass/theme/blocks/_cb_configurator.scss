@@ -1,0 +1,93 @@
+/* =========================
+   CB Configurator
+   ========================= */
+
+.config {
+  --config-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-white);
+  color: var(--col-ink);
+  border-block: 1px solid var(--col-rule);
+
+  .config-tag {
+    display: inline-block;
+    margin-block-end: 1.5rem;
+    padding: 0.375rem 0.875rem;
+    background: rgba(232, 104, 32, 0.12);
+    color: var(--col-orange);
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    line-height: var(--lh-flat);
+  }
+
+  .config-h2 {
+    margin-block-end: 1.5rem;
+    color: var(--col-navy);
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  .config-body {
+    margin-block-end: 2.25rem;
+    color: var(--col-muted);
+    max-inline-size: 30rem;
+  }
+
+  .config-features {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding-block-start: 1.5rem;
+    padding-inline: 0;
+    border-block-start: 1px solid var(--col-rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem 2rem;
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      padding-block-start: 0.5rem;
+      font-size: var(--fs-body-sm);
+      font-weight: var(--fw-medium);
+      color: var(--col-ink);
+
+      &::before {
+        content: "";
+        flex: none;
+        inline-size: 1rem;
+        block-size: 1rem;
+        margin-block-start: 0.2rem;
+        background-color: var(--col-orange);
+        mask: var(--config-check) center / contain no-repeat;
+        -webkit-mask: var(--config-check) center / contain no-repeat;
+      }
+    }
+  }
+
+  .config-img {
+    position: relative;
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    background: var(--col-navy-5);
+    box-shadow: 0 1.5rem 3.75rem rgba(0, 60, 130, 0.12);
+
+    img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+    }
+  }
+}

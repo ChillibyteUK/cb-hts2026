@@ -1,0 +1,57 @@
+{
+  "key": "group_cb_intro",
+  "title": "CB Intro",
+  "fields": [
+    {
+      "key": "field_cb_intro_title",
+      "label": "CB Intro",
+      "name": "title",
+      "type": "message"
+    },
+    {
+      "key": "field_cb_intro_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "field_cb_intro_headline",
+      "label": "Headline",
+      "name": "headline",
+      "instructions": "Wrap emphasised text in a &lt;span&gt; to render it italic + orange.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 3
+    },
+    {
+      "key": "field_cb_intro_body",
+      "label": "Body",
+      "name": "body",
+      "instructions": "First paragraph renders larger as a lede.",
+      "type": "wysiwyg",
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_cb_intro_signature",
+      "label": "Signature",
+      "name": "signature",
+      "instructions": "Trust line shown below the body. Inline &lt;strong&gt; allowed.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 2
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-intro"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": ""
+}

@@ -1,0 +1,38 @@
+{
+  "key": "group_cb_products_grid",
+  "title": "CB Products Grid",
+  "fields": [
+    {
+      "key": "field_cb_products_grid_title",
+      "label": "CB Products Grid",
+      "name": "title",
+      "type": "message"
+    },
+    {
+      "key": "field_cb_products_grid_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "type": "text"
+    },
+    {
+      "key": "field_cb_products_grid_headline",
+      "label": "Headline",
+      "name": "headline",
+      "instructions": "Wrap emphasised text in a &lt;span&gt; to render it italic + orange.",
+      "type": "textarea",
+      "new_lines": "",
+      "rows": 3
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-products-grid"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": ""
+}

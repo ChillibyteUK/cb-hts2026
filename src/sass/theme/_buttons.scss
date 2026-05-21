@@ -133,3 +133,72 @@
     transition: none;
   }
 }
+
+/* --------------------------------------------------
+   Bootstrap 5 .btn variants — matched to index_v3.html
+   Square, uppercase, tracked. Composes with BS5 base.
+   -------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 0;
+  font-size: var(--fs-body-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--col-orange);
+  --bs-btn-border-color: var(--col-orange);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: #d05a18;
+  --bs-btn-hover-border-color: #d05a18;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: #d05a18;
+  --bs-btn-active-border-color: #d05a18;
+  --bs-btn-active-color: #fff;
+}
+
+.btn-outline-dark {
+  --bs-btn-color: var(--col-navy);
+  --bs-btn-border-color: var(--col-navy);
+  --bs-btn-bg: transparent;
+  --bs-btn-hover-bg: var(--col-navy);
+  --bs-btn-hover-border-color: var(--col-navy);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--col-navy);
+  --bs-btn-active-border-color: var(--col-navy);
+  --bs-btn-active-color: #fff;
+  border-width: 1.5px;
+}
+
+.btn-outline-light {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-bg: transparent;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-hover-color: var(--col-navy);
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #fff;
+  --bs-btn-active-color: var(--col-navy);
+  border-width: 1.5px;
+}
+
+.btn-dark {
+  --bs-btn-bg: var(--col-navy);
+  --bs-btn-border-color: var(--col-navy);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--col-navy-deep);
+  --bs-btn-hover-border-color: var(--col-navy-deep);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--col-navy-deep);
+  --bs-btn-active-border-color: var(--col-navy-deep);
+  --bs-btn-active-color: #fff;
+}

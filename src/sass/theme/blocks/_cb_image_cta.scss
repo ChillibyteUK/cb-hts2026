@@ -1,0 +1,84 @@
+.image-cta {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(5rem, 10vw, 7.5rem);
+  background: var(--col-navy);
+  border-block-start: 3px solid var(--col-orange);
+  color: var(--col-white);
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &-media,
+  &-overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  &-media {
+    opacity: 0.18;
+  }
+
+  &-media-img {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-overlay {
+    z-index: 1;
+    background: linear-gradient(
+      135deg,
+      rgba(10, 19, 38, 0.85) 0%,
+      rgba(10, 19, 38, 0.55) 100%
+    );
+  }
+
+  &-inner {
+    position: relative;
+    max-inline-size: 48.75rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  &-headline {
+    margin-block-end: 1.25rem;
+    color: var(--col-white);
+
+    > span {
+      color: var(--col-orange-bright);
+      font-style: italic;
+    }
+  }
+
+  &-content {
+    max-inline-size: 37.5rem;
+    margin-inline: auto;
+    margin-block-end: 2.25rem;
+    color: rgba(255, 255, 255, 0.78);
+
+    p {
+      font-size: var(--fs-body-lg);
+      line-height: var(--lh-relaxed);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+}

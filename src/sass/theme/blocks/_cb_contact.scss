@@ -1,0 +1,112 @@
+.contact {
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-white);
+
+  &-h2 {
+    margin-block-end: 1.25rem;
+    color: var(--col-navy);
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  &-body {
+    max-inline-size: 27.5rem;
+    margin-block-end: 2.5rem;
+    color: var(--col-body);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid var(--col-rule);
+  }
+
+  &-detail {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  &-icon {
+    flex: none;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    color: var(--col-orange);
+
+    svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
+  }
+
+  &-detail-label {
+    margin-block-end: 0.25rem;
+    color: var(--col-muted);
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+  }
+
+  &-detail-value {
+    color: var(--col-ink);
+    font-size: var(--fs-body-lg);
+    font-weight: var(--fw-medium);
+
+    a {
+      color: var(--col-orange);
+      text-decoration: none;
+    }
+  }
+
+  &-note {
+    margin-block-start: 0.5rem;
+    padding: 1rem 1.125rem;
+    background: var(--col-paper);
+    border-inline-start: 3px solid var(--col-orange);
+  }
+
+  &-note-title {
+    margin-block-end: 0.375rem;
+  }
+
+  &-note-body {
+    color: var(--col-muted);
+    font-size: 0.8125rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  &-form {
+    padding: clamp(2rem, 5vw, 3rem);
+    background: var(--col-paper);
+  }
+}
+
+.form-title {
+  margin-block-end: 0.5rem;
+  color: var(--col-navy);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+}
+
+.form-subtitle {
+  margin-block-end: 1.75rem;
+  color: var(--col-muted);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.contact-form-shortcode {
+  .gform_wrapper {
+    margin: 0;
+  }
+}

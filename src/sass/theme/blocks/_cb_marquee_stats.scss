@@ -1,0 +1,64 @@
+/* =========================
+   MARQUEE STATS — continuous horizontal ticker
+   Animation is driven by GSAP; CSS only handles layout + appearance.
+   ========================= */
+
+.marquee {
+  overflow: hidden;
+  padding-block: 22px;
+  background: var(--col-orange);
+  color: var(--col-white);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  white-space: nowrap;
+  will-change: transform;
+
+  // Allow track to grow beyond container; GSAP translates it horizontally.
+  width: max-content;
+
+  font-family: var(--ff-base);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body-lg);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+
+  // Dot separator after every item (works seamlessly across the JS-duplicated set).
+  &::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin-left: 60px;
+    background: var(--col-white);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+.marquee-num {
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-heavy);
+  letter-spacing: var(--ls-tight);
+}
+
+.marquee-title {
+  font-weight: var(--fw-bold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    // GSAP also skips the tween; this is the fallback if JS fails.
+    animation: none;
+  }
+}

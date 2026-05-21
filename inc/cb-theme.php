@@ -13,9 +13,9 @@ defined( 'ABSPATH' ) || exit;
 require_once CB_THEME_DIR . '/inc/cb-utility.php';
 require_once CB_THEME_DIR . '/inc/cb-acf-theme-palette.php';
 require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
+require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
 
 require_once CB_THEME_DIR . '/inc/cb-blocks.php';
-require_once CB_THEME_DIR . '/inc/cb-people-contact.php';
 
 /**
  * Editor styles: opt-in so WP loads editor.css in the block editor.
@@ -119,24 +119,6 @@ function widgets_init() {
 }
 add_action( 'widgets_init', 'widgets_init', 11 );
 
-// phpcs:disable
-// add_filter('wpseo_breadcrumb_links', function( $links ) {
-//     global $post;
-//     if ( is_singular( 'post' ) ) {
-//         $t = get_the_category($post->ID);
-//         $breadcrumb[] = array(
-//             'url' => '/guides/',
-//             'text' => 'Guides',
-//         );
-
-//         array_splice( $links, 1, -2, $breadcrumb );
-//     }
-//     return $links;
-// }
-// );
-// phpcs:enable
-
-
 /**
  * Enqueues theme-specific scripts and styles.
  *
@@ -210,44 +192,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 );
 
-/**
- * Add current-menu-parent class to /work/ menu item when viewing case study posts.
- */
-add_filter(
-	'wp_nav_menu_objects',
-	function ( $items ) {
-        $news_page_id = get_option( 'page_for_posts' );
-        $work_url     = home_url( '/work/' );
-        foreach ( $items as $item ) {
-            // Remove highlight classes from both News and Work by default.
-            if ( intval( $item->object_id ) === intval( $news_page_id ) ) {
-                $item->classes = array_diff( $item->classes, array( 'current_page_parent', 'current-menu-parent', 'active' ) );
-            }
-            if ( $item->url === $work_url ) {
-                $item->classes = array_diff( $item->classes, array( 'current_page_parent', 'current-menu-parent', 'active' ) );
-            }
-        }
-        if ( is_singular( 'post' ) ) {
-            // Highlight News for single posts.
-            foreach ( $items as $item ) {
-                if ( intval( $item->object_id ) === intval( $news_page_id ) ) {
-                    $item->classes[] = 'current-menu-parent';
-                    $item->classes[] = 'active';
-                }
-            }
-        } elseif ( is_singular( 'case_study' ) ) {
-			// Highlight Work for single case_study.
-			foreach ( $items as $item ) {
-				if ( $item->url === $work_url ) {
-					$item->classes[] = 'current-menu-parent';
-					$item->classes[] = 'active';
-				}
-			}
-		}
-		return $items;
-	},
-	20
-);
 
 /**
  * Add defer attribute to scripts for better performance.
@@ -288,208 +232,13 @@ function remove_nav_menu_item_id( $atts ) {
 add_filter( 'nav_menu_link_attributes', 'remove_nav_menu_item_id' );
 
 
-/**
- * Shortcode to display parent categories of service taxonomy terms assigned to the current post.
- */
-add_shortcode( 'service_parents', 'cb_service_parents_shortcode' );
-
-/**
- * Displays parent categories of service taxonomy terms assigned to the current post.
- *
- * @return string HTML markup for parent service categories or empty string.
- */
-function cb_service_parents_shortcode() {
-
-    if ( ! is_singular() ) {
-        return '';
-    }
-
-    $post_id = get_the_ID();
-	$terms   = get_the_terms( $post_id, 'service' );
-
-	if ( ! $terms || is_wp_error( $terms ) ) {
-		return '';
-	}
-
-    $parents = array();
-    foreach ( $terms as $term ) {
-        if ( $term->parent ) {
-            $parent = get_term( $term->parent, 'service' );
-            if ( $parent && ! is_wp_error( $parent ) ) {
-                $parents[ $parent->term_id ] = $parent;
-            }
-        } else {
-            $parents[ $term->term_id ] = $term;
-        }
-    }
-
-	if ( empty( $parents ) ) {
-		return '';
-	}
-
-    $output = '<ul class="service-parents">';
-    foreach ( $parents as $parent ) {
-        $output .= '<li><a href="' . esc_url( home_url( '/work/?service=' . $parent->slug ) ) . '">' . esc_html( $parent->name ) . '</a></li>';
-    }
-	$output .= '</ul>';
-
-	return $output;
-}
-
-
-if ( ! function_exists( 'get_work_image' ) ) {
-    /**
-     * Returns the best available image for a work/case study post, in order:
-     * 1. Post thumbnail
-     * 2. Vimeo video thumbnail (if vimeo_url ACF field is set)
-     * 3. First cb-full-image block image
-     * 4. Default post image
-     *
-     * @param int    $post_id  The post ID.
-     * @param string $css_class The CSS class to apply to the image.
-     * @return string HTML <img> tag for the image.
-     */
-    function get_work_image( $post_id, $css_class = 'work-card__image' ) {
-        // 1. Try post thumbnail
-        if ( get_the_post_thumbnail( $post_id ) ) {
-            return get_the_post_thumbnail(
-                $post_id,
-                'full',
-                array(
-                    'class' => $css_class,
-                    'alt'   => get_post_meta(
-                        get_post_thumbnail_id( $post_id ),
-                        '_wp_attachment_image_alt',
-                        true
-                    ),
-                )
-            );
-        }
-
-        // 2. Try Vimeo video thumbnail as fallback
-        $vimeo_url   = get_field( 'vimeo_url', $post_id );
-        $vimeo_thumb = '';
-        if ( $vimeo_url ) {
-            if ( preg_match( '/vimeo\\.com\\/(?:video\/)?(\\d+)/', $vimeo_url, $matches ) ) {
-                $vimeo_id = $matches[1];
-                if ( function_exists( 'get_vimeo_data_from_id' ) ) {
-                    $vimeo_thumb = get_vimeo_data_from_id( $vimeo_id, 'thumbnail_url' );
-                }
-            }
-        }
-        if ( $vimeo_thumb ) {
-            return '<img src="' . esc_url( $vimeo_thumb ) . '" alt="" class="' . esc_attr( $css_class ) . '" />';
-        }
-
-        // 3. Try first cb-full-image block image
-        $post_blocks = parse_blocks( get_the_content( null, false, $post_id ) );
-        if ( ! function_exists( 'cb_find_first_full_image_url' ) ) {
-            /**
-             * Recursively find the first cb-full-image block image URL.
-             *
-             * @param array $blocks The parsed blocks array.
-             * @return string Image URL if found, empty string otherwise.
-             */
-            function cb_find_first_full_image_url( $blocks ) {
-                foreach ( $blocks as $block ) {
-                    if (
-                        isset( $block['blockName'] ) &&
-                        'cb/cb-full-image' === $block['blockName'] &&
-                        ! empty( $block['attrs']['data']['image'] )
-                    ) {
-                        $image_id = $block['attrs']['data']['image'];
-                        $img_url  = wp_get_attachment_image_url( $image_id, 'full' );
-                        if ( $img_url ) {
-                            return $img_url;
-                        }
-                    }
-                    if ( ! empty( $block['innerBlocks'] ) ) {
-                        $found = cb_find_first_full_image_url( $block['innerBlocks'] );
-                        if ( $found ) {
-                            return $found;
-                        }
-                    }
-                }
-                return '';
-            }
-        }
-        $full_image_url = cb_find_first_full_image_url( $post_blocks );
-        if ( $full_image_url ) {
-            return '<img src="' . esc_url( $full_image_url ) . '" alt="" class="' . esc_attr( $css_class ) . '" />';
-        }
-
-        // 4. Default post image
-        return '<img src="' . esc_url( get_stylesheet_directory_uri() . '/img/default-post-image.png' ) . '" alt="" class="' . esc_attr( $css_class ) . '" />';
-    }
-}
-
-// this populates the CB CTA select with the options defined in the ACF options page repeater field.
-add_filter(
-	'acf/load_field/name=cta_choice',
-	function ( $field ) {
-		$field['choices'] = array();
-
-		// Get repeater rows from options.
-		if ( have_rows( 'ctas', 'option' ) ) {
-			while ( have_rows( 'ctas', 'option' ) ) {
-				the_row();
-				$title = get_sub_field( 'cta_id' );
-				if ( $title ) {
-					// Use title as both key and label, or set your own key.
-					$field['choices'][ $title ] = $title;
-				}
-			}
-		}
-
-		return $field;
-	}
-);
-
-add_filter(
-	'acf/load_field/name=insight_cta',
-	function ( $field ) {
-		$field['choices'] = array();
-
-		// Get repeater rows from options.
-		if ( have_rows( 'ctas', 'option' ) ) {
-			while ( have_rows( 'ctas', 'option' ) ) {
-				the_row();
-				$title = get_sub_field( 'cta_id' );
-				if ( $title ) {
-					// Use title as both key and label, or set your own key.
-					$field['choices'][ $title ] = $title;
-				}
-			}
-		}
-
-		return $field;
-	}
-);
-add_filter(
-	'acf/load_field/name=press_cta',
-	function ( $field ) {
-		$field['choices'] = array();
-
-		// Get repeater rows from options.
-		if ( have_rows( 'ctas', 'option' ) ) {
-			while ( have_rows( 'ctas', 'option' ) ) {
-				the_row();
-				$title = get_sub_field( 'cta_id' );
-				if ( $title ) {
-					// Use title as both key and label, or set your own key.
-					$field['choices'][ $title ] = $title;
-				}
-			}
-		}
-
-		return $field;
-	}
-);
 
 add_filter(
 	'gform_submit_button',
 	function ( $button, $form ) {
-    	return '<button class="gform_button button button--primary" style="background-color:transparent;" id="gform_submit_button_' . $form['id'] . '">' . esc_html( $form['button']['text'] ) . '</button>';
+    	return '<button class="gform_button btn btn-primary w-100 justify-content-center" id="gform_submit_button_' . $form['id'] . '">' .
+			esc_html( $form['button']['text'] ) .
+			'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>';
 	},
 	10,
 	2
@@ -526,30 +275,3 @@ function cb_tiny_mce_before_init( $settings ) {
 
 	return $settings;
 }
-
-/**
- * Dynamically populate the Associated People checkbox choices from published person posts.
- *
- * @param array $field The ACF field array.
- * @return array
- */
-function cb_load_associated_people_choices( $field ) {
-	$field['choices'] = array();
-
-	$people = get_posts(
-		array(
-			'post_type'      => 'person',
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-		)
-	);
-
-	foreach ( $people as $person ) {
-		$field['choices'][ $person->ID ] = esc_html( $person->post_title );
-	}
-
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_service_sidebar_people', 'cb_load_associated_people_choices' );

@@ -4,9 +4,9 @@
 @import "header";
 @import "footer";
 @import "blog";
-@import "page-service-sidebar";
 @import "a11y";
 @import "search";
+@import "forms";
 @import "wp";
 @import "blocks/blocks";
 
@@ -47,11 +47,6 @@ body {
   }
 }
 
-// Gravity Forms checkbox spacing
-.gform-field-label--type-inline {
-  margin-left: 0.5rem;
-}
-
 #breadcrumbs {
   font-size: var(--text-sm);
   a {
@@ -82,37 +77,6 @@ body {
   --bs-aspect-ratio: calc(16 / 9 * 100%); /* = 177.77% */
 }
 
-.service-parents {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  min-width: 50%;
-  li {
-    font-size: var(--fs-body);
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    display: inline-block;
-    width: 100%;
-    a {
-      text-decoration: none;
-      display: block;
-      color: var(--col-green-400);
-      transition:
-        background-color 0.3s,
-        color 0.3s;
-
-      &:hover {
-        text-decoration: none;
-        background-color: hsl(var(--hsl-ink) / 0.8);
-      }
-    }
-  }
-  li:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  }
-}
 
 /* Bootstrap-style order utilities (replicate for each breakpoint) */
 
@@ -436,84 +400,6 @@ for (; i < all.length; i++) {
 //   border-radius: 0;
 // }
 
-.has-neutral-400-border-top {
-  border-top: 1px solid var(--col-secondary-light) !important;
-}
-
-.has-neutral-400-border-bottom {
-  border-bottom: 1px solid var(--col-secondary-light) !important;
-}
-
-.service-parents {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 3rem;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  min-width: 50%;
-  li {
-    font-size: var(--fs-body);
-    border-top: 1px solid var(--col-brand-blue);
-    display: inline-block;
-    width: 100%;
-    a {
-      text-decoration: none;
-      display: block;
-      color: var(--col-brand-blue);
-      transition:
-        background-color 0.3s,
-        color 0.3s;
-
-      &:hover {
-        text-decoration: none;
-        background-color: rgba(0, 85, 165, 0.1);
-      }
-    }
-  }
-  li:last-child {
-    border-bottom: 1px solid var(--col-brand-blue);
-  }
-}
-
-hr,
-hr.wp-block-separator {
-  border: none !important;
-  opacity: 1;
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    var(--col-purple-400),
-    var(--col-green-400),
-    var(--col-brown-400),
-    var(--col-violet-400),
-    var(--col-orange-400)
-  );
-}
-
-.has-underline {
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      to right,
-      var(--col-purple-400),
-      var(--col-green-400),
-      var(--col-brown-400),
-      var(--col-violet-400),
-      var(--col-orange-400)
-    );
-    z-index: 1;
-  }
-}
 
 .text-page {
   padding-top: 120px;

@@ -1,0 +1,70 @@
+/* =========================
+   CB Selected Clients
+   ========================= */
+
+.clients-strip {
+  --logo-h: 3rem; /* uniform target height */
+  --logo-gap: 3.5rem; /* rhythm between logos */
+
+  padding-block: 3rem;
+  background: var(--col-white);
+  border-block: 1px solid var(--col-rule);
+
+  .clients-inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .clients-label {
+    flex: none;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-caps);
+    text-transform: var(--tt-upper);
+    line-height: var(--lh-flat);
+    color: var(--col-muted);
+  }
+
+  .clients-marquee {
+    flex: 1;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  .clients-track {
+    display: flex;
+    align-items: center;
+    gap: var(--logo-gap);
+    width: max-content;
+  }
+
+  /**
+   * 16:9 image, fixed height, width derived from aspect ratio.
+   * Editors pre-crop and colour-correct before upload.
+   */
+  .client-logo {
+    display: block;
+    flex: none;
+    block-size: var(--logo-h);
+    inline-size: calc(var(--logo-h) * 16 / 9);
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    --logo-h: 2.25rem;
+    --logo-gap: 2rem;
+
+    .clients-inner {
+      gap: 1.5rem;
+    }
+  }
+}
