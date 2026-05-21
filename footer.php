@@ -46,13 +46,13 @@ $instagram_url         = get_field( 'instagram_url', 'option' );
                 <div class="footer-col-title">Products</div>
                 <?php
                 wp_nav_menu(
-                 array(
-                  'theme_location' => 'footer_menu_products',
-                  'container'      => false,
-                  'menu_class'     => 'footer-links',
-                  'fallback_cb'    => false,
-                  'depth'          => 1,
-                 )
+					array(
+						'theme_location' => 'footer_menu_products',
+						'container'      => false,
+						'menu_class'     => 'footer-links',
+						'fallback_cb'    => false,
+						'depth'          => 1,
+					)
                 );
                 ?>
             </div>
@@ -60,13 +60,13 @@ $instagram_url         = get_field( 'instagram_url', 'option' );
                 <div class="footer-col-title">Applications</div>
                 <?php
                 wp_nav_menu(
-                 array(
-                  'theme_location' => 'footer_menu_applications',
-                  'container'      => false,
-                  'menu_class'     => 'footer-links',
-                  'fallback_cb'    => false,
-                  'depth'          => 1,
-                 )
+					array(
+						'theme_location' => 'footer_menu_applications',
+						'container'      => false,
+						'menu_class'     => 'footer-links',
+						'fallback_cb'    => false,
+						'depth'          => 1,
+					)
                 );
                 ?>
             </div>
