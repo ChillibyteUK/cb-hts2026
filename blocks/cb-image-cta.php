@@ -71,7 +71,7 @@ $headline_allowed = array(
 					?>
 				<a href="<?= esc_url( $button['url'] ); ?>"
 					<?= ! empty( $button['target'] ) ? ' target="' . esc_attr( $button['target'] ) . '" rel="noopener"' : ''; ?>
-					class="btn btn-primary">
+					class="btn btn-primary w-100 w-md-auto">
 					<?= esc_html( ! empty( $button['title'] ) ? $button['title'] : 'Get Started' ); ?>
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
 						<path d="M5 12h14M12 5l7 7-7 7"/>
@@ -84,7 +84,7 @@ $headline_allowed = array(
 					?>
 				<a href="<?= esc_url( $button_2['url'] ); ?>"
 					<?= ! empty( $button_2['target'] ) ? ' target="' . esc_attr( $button_2['target'] ) . '" rel="noopener"' : ''; ?>
-					class="btn btn-outline-light">
+					class="btn btn-outline-light w-100 w-md-auto">
 					<?= esc_html( ! empty( $button_2['title'] ) ? $button_2['title'] : 'Learn More' ); ?>
 				</a>
 					<?php

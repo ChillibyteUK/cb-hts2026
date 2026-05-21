@@ -50,7 +50,7 @@ $headline_allowed = array(
 					?>
 					<a href="<?= esc_url( $cta['url'] ); ?>"
 						<?= ! empty( $cta['target'] ) ? ' target="' . esc_attr( $cta['target'] ) . '" rel="noopener"' : ''; ?>
-						class="btn btn-primary">
+						class="btn btn-primary w-100 w-md-auto">
 						<?= esc_html( ! empty( $cta['title'] ) ? $cta['title'] : 'Launch the configurator' ); ?>
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
 							<path d="M5 12h14M12 5l7 7-7 7"/>

@@ -133,11 +133,11 @@ if ( session_status() === PHP_SESSION_NONE ) {
 
 <!-- PRIMARY NAV -->
 <header id="wrapper-navbar" class="sticky-top">
-	<nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+	<nav class="navbar navbar-expand-xl" aria-label="Primary navigation">
 		<div class="container">
 			<a class="navbar-brand" href="<?= esc_url( home_url( '/' ) ); ?>" aria-label="HTS Industries home">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/HTS_Logo.png' ); ?>"
-					alt="HTS Industries" height="40" width="auto">
+					alt="HTS Industries">
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -153,7 +153,7 @@ if ( session_status() === PHP_SESSION_NONE ) {
 					array(
 						'theme_location' => 'primary_nav',
 						'container'      => false,
-						'menu_class'     => 'navbar-nav mx-lg-auto align-items-lg-center',
+						'menu_class'     => 'navbar-nav mx-xl-auto align-items-xl-center',
 						'fallback_cb'    => '',
 						'depth'          => 1,
 						'walker'         => new Understrap_WP_Bootstrap_Navwalker(),
@@ -161,7 +161,7 @@ if ( session_status() === PHP_SESSION_NONE ) {
 				);
 				?>
 
-				<div class="nav-cta d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 mt-3 mt-lg-0">
+				<div class="nav-cta d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center gap-2 mt-3 mt-lg-0">
 					<a href="#configurator" class="btn btn-outline-dark">Start Designing</a>
 					<a href="#contact" class="btn btn-primary">Get an Estimate</a>
 				</div>

@@ -71,10 +71,16 @@
   text-decoration: none;
   display: block;
 
+  > img,
   &-img {
+    position: absolute;
+    inset: 0;
+    display: block;
     inline-size: 100%;
     block-size: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     opacity: 0.78;
     transition:
       transform 0.8s ease,

@@ -47,6 +47,14 @@ body {
   }
 }
 
+section[id] {
+  scroll-margin-top: 2rem;
+
+  @media (min-width: 992px) {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
 #breadcrumbs {
   font-size: var(--text-sm);
   a {
@@ -76,7 +84,6 @@ body {
 .ratio-9x16 {
   --bs-aspect-ratio: calc(16 / 9 * 100%); /* = 177.77% */
 }
-
 
 /* Bootstrap-style order utilities (replicate for each breakpoint) */
 
@@ -399,7 +406,6 @@ for (; i < all.length; i++) {
 // .form-control {
 //   border-radius: 0;
 // }
-
 
 .text-page {
   padding-top: 120px;
