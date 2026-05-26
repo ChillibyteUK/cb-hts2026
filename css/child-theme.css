@@ -23825,7 +23825,6 @@ input, select, textarea {
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
-  opacity: 0.78;
   transition: transform 0.8s ease, opacity 0.3s ease;
 }
 .app-card-overlay {
@@ -23833,6 +23832,7 @@ input, select, textarea {
   inset: 0;
   background: linear-gradient(to top, rgba(10, 19, 38, 0.95) 0%, rgba(10, 19, 38, 0.2) 55%, transparent 100%);
   pointer-events: none;
+  opacity: 0.85;
 }
 .app-card-num {
   position: absolute;
