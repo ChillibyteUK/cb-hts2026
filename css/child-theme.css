@@ -23517,6 +23517,7 @@ input, select, textarea {
   overflow: hidden;
   border-radius: 4px;
   background: var(--col-navy);
+  box-shadow: 0 1.5rem 3.75rem rgba(0, 60, 130, 0.12);
 }
 .hero-img-wrap img {
   display: block;
@@ -23549,9 +23550,10 @@ input, select, textarea {
   gap: 14px;
   padding: 18px 24px;
   background: var(--col-white);
+  border: 1px solid rgba(0, 60, 130, 0.08);
   border-left: 3px solid var(--col-orange);
   border-radius: 6px;
-  box-shadow: 0 24px 56px rgba(0, 60, 130, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 60, 130, 0.14);
 }
 @media (max-width: 991px) {
   .hero-badge {
