@@ -1,3 +1,9 @@
+/**
+ * File custom-javascript.js.
+ *
+ * Handles same-page anchor navigation with smooth scrolling offsets that
+ * account for the fixed header and mobile Bootstrap navigation state.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   var navbar = document.getElementById("primary-navbar");
   var navWrapper = document.getElementById("wrapper-navbar");
@@ -9,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /**
+   * Adjust the scroll position so hash targets stay visible below the header.
+   */
   function getScrollOffset() {
     var navHeight = navWrapper ? navWrapper.offsetHeight : 0;
 
@@ -19,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
     return navHeight + 12;
   }
 
+  /**
+   * Scroll to a hash target using Lenis when available, or native smooth scroll.
+   */
   function scrollToHash(hash) {
     if (!hash || hash === "#") {
       return;
@@ -58,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var url = new URL(href, window.location.href);
 
+      // Only intercept in-page anchor links that resolve on the current URL.
       if (
         url.origin !== window.location.origin ||
         url.pathname !== window.location.pathname ||
@@ -82,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         navbar.classList.contains("show")
       ) {
         collapse.hide();
+        // Wait for the mobile nav to finish collapsing before measuring scroll.
         window.setTimeout(function () {
           scrollToHash(url.hash);
         }, 250);

@@ -7,6 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$block_id           = $block['anchor'] ?? $block['id'] ?? wp_unique_id( 'cb-home-hero-' );
 $meta_items         = get_field( 'meta_items' );
 $h1_line1_text      = get_field( 'h1_line1_text' );
 $h1_line1_highlight = get_field( 'h1_line1_highlight' );
@@ -28,9 +29,8 @@ if ( ! empty( $block['className'] ) ) {
 if ( ! empty( $block['align'] ) ) {
 	$classes .= ' align' . $block['align'];
 }
-$anchor = ! empty( $block['anchor'] ) ? ' id="' . esc_attr( $block['anchor'] ) . '"' : '';
 ?>
-<section class="<?= esc_attr( $classes ); ?>"<?= wp_kses_post( $anchor ); ?>>
+<section id="<?= esc_attr( $block_id ); ?>" class="<?= esc_attr( $classes ); ?>">
 	<div class="container">
 		<div class="hero-split">
 			<div class="hero-content">
@@ -174,6 +174,46 @@ $anchor = ! empty( $block['anchor'] ) ? ' id="' . esc_attr( $block['anchor'] ) .
 				?>
 			</div>
 
-		</div>
 	</div>
+</div>
 </section>
+
+<?php if ( $image ) : ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		return;
+	}
+
+	var section = document.getElementById(<?= wp_json_encode( $block_id ); ?>);
+	if (!section) return;
+
+	var ticking = false;
+
+	function update() {
+		var rect = section.getBoundingClientRect();
+		var windowHeight = window.innerHeight;
+
+		if (rect.bottom > 0 && rect.top < windowHeight) {
+			var percent = (windowHeight - rect.top) / (windowHeight + rect.height);
+			percent = Math.max(0, Math.min(1, percent));
+			var translateY = (percent - 0.5) * 120;
+			section.style.setProperty('--hero-parallax-y', translateY.toFixed(1) + 'px');
+		}
+
+		ticking = false;
+	}
+
+	function onScroll() {
+		if (!ticking) {
+			window.requestAnimationFrame(update);
+			ticking = true;
+		}
+	}
+
+	window.addEventListener('scroll', onScroll, { passive: true });
+	window.addEventListener('resize', onScroll);
+	onScroll();
+});
+</script>
+<?php endif; ?>

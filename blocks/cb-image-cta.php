@@ -7,6 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$block_id = $block['anchor'] ?? $block['id'] ?? wp_unique_id( 'cb-image-cta-' );
 $image    = get_field( 'background_image' );
 $eyebrow  = get_field( 'eyebrow' );
 $headline = get_field( 'headline' );
@@ -14,12 +15,18 @@ $content  = get_field( 'content' );
 $button   = get_field( 'button' );
 $button_2 = get_field( 'button_secondary' );
 
+$section_classes = array( 'image-cta' );
+
+if ( ! empty( $block['className'] ) ) {
+	$section_classes[] = $block['className'];
+}
+
 $headline_allowed = array(
 	'span' => array(),
 	'br'   => array(),
 );
 ?>
-<section class="image-cta">
+<section id="<?= esc_attr( $block_id ); ?>" class="<?= esc_attr( implode( ' ', $section_classes ) ); ?>">
 	<?php
 	if ( ! empty( $image['ID'] ) ) {
 		?>
@@ -97,3 +104,39 @@ $headline_allowed = array(
 		</div>
 	</div>
 </section>
+
+<?php if ( ! empty( $image['ID'] ) ) : ?>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	var section = document.getElementById(<?= wp_json_encode( $block_id ); ?>);
+	if (!section) return;
+
+	var ticking = false;
+
+	function update() {
+		var rect = section.getBoundingClientRect();
+		var windowHeight = window.innerHeight;
+
+		if (rect.bottom > 0 && rect.top < windowHeight) {
+			var percent = (windowHeight - rect.top) / (windowHeight + rect.height);
+			percent = Math.max(0, Math.min(1, percent));
+			var translateY = (percent - 0.5) * 240;
+			section.style.setProperty('--image-cta-parallax-y', translateY.toFixed(1) + 'px');
+		}
+
+		ticking = false;
+	}
+
+	function onScroll() {
+		if (!ticking) {
+			window.requestAnimationFrame(update);
+			ticking = true;
+		}
+	}
+
+	window.addEventListener('scroll', onScroll, { passive: true });
+	window.addEventListener('resize', onScroll);
+	onScroll();
+});
+</script>
+<?php endif; ?>

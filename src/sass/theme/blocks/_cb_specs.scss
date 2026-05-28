@@ -1,6 +1,7 @@
 .specs {
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-paper);
+  border-top: 1px solid var(--col-rule);
 
   &-headline {
     margin-block-end: 1.25rem;

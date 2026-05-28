@@ -110,6 +110,42 @@ $br_allowed = array(
 				}
 				?>
 			</div>
-		</div>
 	</div>
+</div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (
+		!('IntersectionObserver' in window) ||
+		window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	) {
+		return;
+	}
+
+	var section = document.getElementById('why');
+
+	if (!section) {
+		return;
+	}
+
+	var observer = new IntersectionObserver(
+		function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) {
+					return;
+				}
+
+				section.classList.add('is-in-view');
+				observer.disconnect();
+			});
+		},
+		{
+			threshold: 0.2,
+			rootMargin: '0px 0px -10% 0px',
+		}
+	);
+
+	observer.observe(section);
+});
+</script>

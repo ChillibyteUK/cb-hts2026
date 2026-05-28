@@ -3,7 +3,11 @@
   overflow: hidden;
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-section-bg);
+  border-top: 1px solid var(--col-rule);
   color: var(--col-ink);
+  --why-watermark-opacity: 0.02;
+  --why-watermark-scale: 0.96;
+  --why-watermark-shift: 1.5rem;
 
   &::before {
     content: "WHY";
@@ -14,8 +18,20 @@
     font-weight: var(--fw-heavy);
     letter-spacing: -0.04em;
     line-height: 1;
-    color: rgba(0, 60, 130, 0.04);
+    color: rgba(0, 60, 130, var(--why-watermark-opacity));
     pointer-events: none;
+    transform: translate3d(0, var(--why-watermark-shift), 0)
+      scale(var(--why-watermark-scale));
+    transform-origin: top right;
+    transition:
+      color 0.8s ease,
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &.is-in-view {
+    --why-watermark-opacity: 0.04;
+    --why-watermark-scale: 1;
+    --why-watermark-shift: 0rem;
   }
 
   .container,
@@ -111,5 +127,17 @@
   &-reason-body {
     font-size: var(--fs-body-sm);
     line-height: var(--lh-relaxed);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-split {
+    --why-watermark-opacity: 0.04;
+    --why-watermark-scale: 1;
+    --why-watermark-shift: 0rem;
+
+    &::before {
+      transition: none;
+    }
   }
 }

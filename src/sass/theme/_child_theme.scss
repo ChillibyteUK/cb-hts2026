@@ -10,8 +10,13 @@
 @import "wp";
 @import "blocks/blocks";
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--col-white);
+  min-block-size: 100svh;
 }
 
 @media (min-width: 992px) {

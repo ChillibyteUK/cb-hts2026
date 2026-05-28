@@ -23286,6 +23286,7 @@ input, select, textarea {
    HERO — split layout, white bg, tick-list bullets
    ========================= */
 .hero {
+  --hero-parallax-y: 0px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -23388,6 +23389,9 @@ input, select, textarea {
   height: 8px;
   background: rgba(232, 104, 32, 0.8);
   z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: hero-underline-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
 }
 @media (max-width: 540px) {
   .hero-h1 {
@@ -23399,6 +23403,20 @@ input, select, textarea {
   }
 }
 
+@keyframes hero-underline-reveal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-h1 .underline::after {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
 /* --- Lede --- */
 .hero-lede {
   max-width: 520px;
@@ -23499,6 +23517,7 @@ input, select, textarea {
   overflow: hidden;
   border-radius: 4px;
   background: var(--col-navy);
+  box-shadow: 0 24px 60px rgba(0, 60, 130, 0.12);
 }
 .hero-img-wrap img {
   display: block;
@@ -23506,6 +23525,8 @@ input, select, textarea {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+  transform: translate3d(0, var(--hero-parallax-y), 0) scale(1.08);
+  will-change: transform;
 }
 @media (max-width: 991px) {
   .hero-img-wrap {
@@ -23531,7 +23552,7 @@ input, select, textarea {
   background: var(--col-white);
   border-left: 3px solid var(--col-orange);
   border-radius: 6px;
-  box-shadow: 0 14px 40px rgba(0, 60, 130, 0.16);
+  box-shadow: 0 24px 56px rgba(0, 60, 130, 0.22);
 }
 @media (max-width: 991px) {
   .hero-badge {
@@ -24129,7 +24150,11 @@ input, select, textarea {
   overflow: hidden;
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-section-bg);
+  border-top: 1px solid var(--col-rule);
   color: var(--col-ink);
+  --why-watermark-opacity: 0.02;
+  --why-watermark-scale: 0.96;
+  --why-watermark-shift: 1.5rem;
 }
 .why-split::before {
   content: "WHY";
@@ -24140,8 +24165,16 @@ input, select, textarea {
   font-weight: var(--fw-heavy);
   letter-spacing: -0.04em;
   line-height: 1;
-  color: rgba(0, 60, 130, 0.04);
+  color: rgba(0, 60, 130, var(--why-watermark-opacity));
   pointer-events: none;
+  transform: translate3d(0, var(--why-watermark-shift), 0) scale(var(--why-watermark-scale));
+  transform-origin: top right;
+  transition: color 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.why-split.is-in-view {
+  --why-watermark-opacity: 0.04;
+  --why-watermark-scale: 1;
+  --why-watermark-shift: 0rem;
 }
 .why-split .container, .why-split .wp-block-group:not(.alignfull),
 .why-split .row {
@@ -24225,7 +24258,18 @@ input, select, textarea {
   line-height: var(--lh-relaxed);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .why-split {
+    --why-watermark-opacity: 0.04;
+    --why-watermark-scale: 1;
+    --why-watermark-shift: 0rem;
+  }
+  .why-split::before {
+    transition: none;
+  }
+}
 .image-cta {
+  --image-cta-parallax-y: 0px;
   position: relative;
   overflow: hidden;
   padding-block: clamp(5rem, 10vw, 7.5rem);
@@ -24252,6 +24296,8 @@ input, select, textarea {
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
+  transform: translate3d(0, var(--image-cta-parallax-y), 0) scale(1.08);
+  will-change: transform;
 }
 .image-cta-overlay {
   z-index: 1;
@@ -24415,6 +24461,7 @@ input, select, textarea {
 .specs {
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-paper);
+  border-top: 1px solid var(--col-rule);
 }
 .specs-headline {
   margin-block-end: 1.25rem;
@@ -24480,7 +24527,8 @@ input, select, textarea {
 
 .process {
   padding-block: clamp(5rem, 10vw, 8.75rem);
-  background: var(--col-paper);
+  background: var(--col-white);
+  border-top: 1px solid var(--col-rule);
 }
 .process-header {
   margin-block-end: clamp(3rem, 7vw, 5rem);
@@ -24530,7 +24578,7 @@ input, select, textarea {
   transition: background 0.25s ease;
 }
 .process-step:hover {
-  background: var(--col-white);
+  background: var(--col-paper);
 }
 @media (min-width: 1200px) {
   .process-step:last-child {
@@ -24776,8 +24824,13 @@ input, select, textarea {
   margin: 0;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--col-white);
+  min-block-size: 100svh;
 }
 
 @media (min-width: 992px) {
