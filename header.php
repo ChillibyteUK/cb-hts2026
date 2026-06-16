@@ -118,7 +118,7 @@ if ( session_status() === PHP_SESSION_NONE ) {
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="d-flex align-items-center gap-2">
 				<span class="utility-pill">Live Build</span>
-				<span>Currently delivering 4 UK structures this month — average lead time 11 days</span>
+				<span>Currently delivering 4 UK structures this month — average build time of 8 days</span>
 			</div>
 			<div class="d-flex align-items-center gap-4 fw-medium">
 				<a href="tel:<?= esc_attr( parse_phone( get_field( 'contact_phone', 'option' ) ) ); ?>"><?= esc_html( get_field( 'contact_phone', 'option' ) ); ?></a>

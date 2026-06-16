@@ -23712,7 +23712,7 @@ input, select, textarea {
    CB Selected Clients
    ========================= */
 .clients-strip {
-  --logo-h: 3rem; /* uniform target height */
+  --logo-h: 4rem; /* uniform target height */
   --logo-gap: 3.5rem; /* rhythm between logos */
   padding-block: 3rem;
   background: var(--col-white);
