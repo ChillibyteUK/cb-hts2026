@@ -19,6 +19,77 @@ function acf_blocks() {
 
 		acf_register_block_type(
 			array(
+				'name'            => 'cb_products_nav',
+				'title'           => __( 'CB Products Nav' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-products-nav.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_faqs',
+				'title'           => __( 'CB FAQs' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-faqs.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_client_projects_gallery',
+				'title'           => __( 'CB Client Projects Gallery' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-client-projects-gallery.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_product_hero',
+				'title'           => __( 'CB Product Hero' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-product-hero.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
 				'name'            => 'cb_contact',
 				'title'           => __( 'CB Contact' ),
 				'category'        => 'layout',
@@ -30,7 +101,9 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+					'color'     => array(
+						'background' => true,
+					),
 				),
 			)
 		);
@@ -48,7 +121,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -66,7 +139,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -84,7 +157,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -102,7 +175,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -120,7 +193,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -138,7 +211,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -156,7 +229,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -174,7 +247,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -192,7 +265,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -210,7 +283,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -228,7 +301,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -246,7 +319,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);
@@ -264,7 +337,7 @@ function acf_blocks() {
 					'anchor'    => true,
 					'className' => true,
 					'align'     => true,
-          
+
 				),
 			)
 		);

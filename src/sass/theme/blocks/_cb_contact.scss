@@ -87,6 +87,10 @@
   &-form {
     padding: clamp(2rem, 5vw, 3rem);
     background: var(--col-paper);
+
+    &--on-bg {
+      background: var(--col-white);
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 {
-    "key": "group_cb_intro",
-    "title": "CB Intro",
+    "key": "group_cb_client_projects_gallery",
+    "title": "CB Client Projects Gallery",
     "fields": [
         {
-            "key": "field_cb_intro_title",
-            "label": "CB Intro",
+            "key": "field_cb_client_projects_gallery_title",
+            "label": "CB Client Projects Gallery",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -21,14 +21,14 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_cb_intro_eyebrow",
+            "key": "field_6a3bf8f8b007e",
             "label": "Eyebrow",
             "name": "eyebrow",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": false,
-            "conditional_logic": false,
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -36,91 +36,80 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_cb_intro_headline",
-            "label": "Headline",
-            "name": "headline",
+            "key": "field_6a3bf903b007f",
+            "label": "Heading",
+            "name": "heading",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Wrap emphasised text in a &lt;span&gt; to render it italic + orange.",
-            "required": false,
-            "conditional_logic": false,
+            "type": "text",
+            "instructions": "Wrap in span tags to accent",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "new_lines": "",
-            "rows": 3,
             "default_value": "",
             "maxlength": "",
-            "placeholder": ""
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_cb_intro_body",
-            "label": "Body",
-            "name": "body",
+            "key": "field_6a3bf920b0080",
+            "label": "Intro",
+            "name": "intro",
             "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "First paragraph renders larger as a lede.",
-            "required": false,
-            "conditional_logic": false,
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "tabs": "visual",
-            "toolbar": "basic",
-            "media_upload": 0,
             "default_value": "",
-            "delay": 0
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "wpautop"
         },
         {
-            "key": "field_cb_intro_signature",
-            "label": "Signature",
-            "name": "signature",
+            "key": "field_6a3be80f1e077",
+            "label": "Images",
+            "name": "images",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Trust line shown below the body. Inline &lt;strong&gt; allowed.",
+            "type": "gallery",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
-            "rows": 2,
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_cb_intro_highlights",
-            "label": "Highlights",
-            "name": "highlights",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "One per line",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
-            "rows": 2,
-            "placeholder": "",
-            "new_lines": ""
+            "return_format": "id",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -128,7 +117,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cb-intro"
+                "value": "acf\/cb-client-projects-gallery"
             }
         ]
     ],
@@ -144,5 +133,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1782305687
+    "modified": 1782315311
 }

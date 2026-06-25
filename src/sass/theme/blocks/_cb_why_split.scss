@@ -1,7 +1,9 @@
 .why-split {
+  --section-py: clamp(5rem, 10vw, 8.75rem);
+
   position: relative;
-  overflow: hidden;
-  padding-block: clamp(5rem, 10vw, 8.75rem);
+  overflow: clip;
+  padding-block: var(--section-py);
   background: var(--col-section-bg);
   border-top: 1px solid var(--col-rule);
   color: var(--col-ink);
@@ -9,23 +11,31 @@
   --why-watermark-scale: 0.96;
   --why-watermark-shift: 1.5rem;
 
-  &::before {
-    content: "WHY";
-    position: absolute;
-    inset-block-start: clamp(2rem, 7vw, 5rem);
-    inset-inline-end: clamp(-3.5rem, -2vw, -1.5rem);
-    font-size: clamp(6rem, 19vw, 17.5rem);
-    font-weight: var(--fw-heavy);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    color: rgba(0, 60, 130, var(--why-watermark-opacity));
+  &-watermark {
+    position: sticky;
+    top: var(--h-top);
+    height: 0;
+    margin-block-start: calc(-1 * var(--section-py));
+    z-index: 0;
     pointer-events: none;
-    transform: translate3d(0, var(--why-watermark-shift), 0)
-      scale(var(--why-watermark-scale));
-    transform-origin: top right;
-    transition:
-      color 0.8s ease,
-      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &::before {
+      content: "WHY";
+      position: absolute;
+      inset-block-start: clamp(2rem, 7vw, 5rem);
+      inset-inline-end: clamp(0rem, 2vw, 2rem);
+      font-size: clamp(6rem, 19vw, 17.5rem);
+      font-weight: var(--fw-heavy);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: rgba(0, 60, 130, var(--why-watermark-opacity));
+      transform: translate3d(0, var(--why-watermark-shift), 0)
+        scale(var(--why-watermark-scale));
+      transform-origin: top right;
+      transition:
+        color 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
   }
 
   &.is-in-view {
@@ -128,6 +138,12 @@
     font-size: var(--fs-body-sm);
     line-height: var(--lh-relaxed);
   }
+
+  &-left {
+    position: sticky;
+    top: var(--h-top);
+    height: fit-content;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -136,8 +152,10 @@
     --why-watermark-scale: 1;
     --why-watermark-shift: 0rem;
 
-    &::before {
-      transition: none;
+    &-watermark {
+      &::before {
+        transition: none;
+      }
     }
   }
 }

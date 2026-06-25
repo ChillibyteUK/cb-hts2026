@@ -20,6 +20,11 @@ $form_code     = get_field( 'form_shortcode' );
 $phone = get_field( 'contact_phone', 'option' );
 $email = get_field( 'contact_email', 'option' );
 
+// Support Gutenberg color picker.
+$bg         = ! empty( $block['backgroundColor'] ) ? 'has-' . $block['backgroundColor'] . '-background-color' : '';
+$bg_color   = $block['backgroundColor'] ?? '';
+$form_white = $bg_color && 'white' !== $bg_color;
+
 $headline_allowed = array(
 	'span' => array(),
 	'br'   => array(),
@@ -29,7 +34,7 @@ $br_allowed = array(
 	'br' => array(),
 );
 ?>
-<section class="contact" id="contact">
+<section class="contact <?= esc_attr( $bg ); ?>" id="contact">
 	<div class="container">
 		<div class="contact-inner row g-5 g-xl-6 align-items-start">
 			<div class="col-lg-5">
@@ -102,7 +107,7 @@ $br_allowed = array(
 			</div>
 
 			<div class="col-lg-7">
-				<div class="contact-form">
+				<div class="contact-form<?= $form_white ? ' contact-form--on-bg' : ''; ?>">
 					<?php if ( $form_title ) { ?>
 						<div class="form-title"><?= esc_html( $form_title ); ?></div>
 					<?php } ?>

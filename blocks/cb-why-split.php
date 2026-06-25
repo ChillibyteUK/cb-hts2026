@@ -28,42 +28,48 @@ $br_allowed = array(
 );
 ?>
 <section class="why-split" id="why">
+	<div class="why-split-watermark" aria-hidden="true"></div>
 	<div class="container">
-		<div class="row g-5 g-xl-6 align-items-start">
+		<div class="row g-5 g-xl-6">
 			<div class="col-lg-5">
-				<?php
-				if ( $eyebrow ) {
-					?>
-				<div class="eyebrow"><?= esc_html( $eyebrow ); ?></div>
+				<div class="why-split-left">
 					<?php
-				}
-				if ( $headline ) {
-					?>
-				<h2 class="why-split-headline h2"><?= wp_kses( $headline, $headline_allowed ); ?></h2>
-					<?php
-				}
-				if ( $body ) {
-					?>
-				<div class="why-split-copy prose-md"><?= wp_kses( $body, $br_allowed ); ?></div>
-					<?php
-				}
-
-				if ( $stats ) {
-					?>
-				<div class="why-split-stats row row-cols-2 g-4">
-					<?php
-					foreach ( $stats as $stat ) {
+					if ( $eyebrow ) {
 						?>
-					<div class="col">
+					<div class="eyebrow"><?= esc_html( $eyebrow ); ?></div>
 						<?php
-						if ( ! empty( $stat['value'] ) ) {
+					}
+					if ( $headline ) {
+						?>
+					<h2 class="why-split-headline h2"><?= wp_kses( $headline, $headline_allowed ); ?></h2>
+						<?php
+					}
+					if ( $body ) {
+						?>
+					<div class="why-split-copy prose-md"><?= wp_kses( $body, $br_allowed ); ?></div>
+						<?php
+					}
+
+					if ( $stats ) {
+						?>
+					<div class="why-split-stats row row-cols-2 g-4">
+						<?php
+						foreach ( $stats as $stat ) {
 							?>
-						<div class="why-split-stat-value stat-lg"><?= wp_kses( $stat['value'], $stat_value_allowed ); ?></div>
+						<div class="col">
 							<?php
-						}
-						if ( ! empty( $stat['label'] ) ) {
+							if ( ! empty( $stat['value'] ) ) {
+								?>
+							<div class="why-split-stat-value stat-lg"><?= wp_kses( $stat['value'], $stat_value_allowed ); ?></div>
+								<?php
+							}
+							if ( ! empty( $stat['label'] ) ) {
+								?>
+							<div class="why-split-stat-label"><?= wp_kses( $stat['label'], $br_allowed ); ?></div>
+								<?php
+							}
 							?>
-						<div class="why-split-stat-label"><?= wp_kses( $stat['label'], $br_allowed ); ?></div>
+						</div>
 							<?php
 						}
 						?>
@@ -72,9 +78,6 @@ $br_allowed = array(
 					}
 					?>
 				</div>
-					<?php
-				}
-				?>
 			</div>
 
 			<div class="col-lg-7">

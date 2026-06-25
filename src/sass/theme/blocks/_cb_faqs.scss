@@ -1,0 +1,82 @@
+.faq {
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-white);
+
+  &-header {
+    margin-block-end: clamp(3rem, 7vw, 5rem);
+    text-align: center;
+  }
+
+  &-headline {
+    max-inline-size: 47.5rem;
+    margin-inline: auto;
+    margin-block-end: 1rem;
+    color: var(--col-navy);
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  &-sub {
+    max-inline-size: 40rem;
+    margin-inline: auto;
+    color: var(--col-body);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+  }
+
+  .accordion {
+    --bs-accordion-btn-padding-x: 0;
+    --bs-accordion-btn-padding-y: 1.5rem;
+    --bs-accordion-body-padding-x: 0;
+    --bs-accordion-body-padding-y: 0 0 1.5rem;
+    --bs-accordion-btn-color: var(--col-navy);
+    --bs-accordion-active-color: var(--col-orange);
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-border-color: var(--col-light-border);
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2327383a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e86820' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
+    --bs-accordion-btn-icon-width: 1.25rem;
+    --bs-accordion-btn-icon-transform: rotate(0deg);
+
+    max-inline-size: 52rem;
+    margin-inline: auto;
+  }
+
+  .accordion-item {
+    border-inline: 0;
+
+    &:first-child {
+      border-block-start: 1px solid var(--col-rule);
+    }
+  }
+
+  .accordion-button {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-snug);
+    justify-content: space-between;
+
+    &:hover {
+      color: var(--col-orange);
+    }
+  }
+
+  .accordion-body {
+    color: var(--col-body);
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-relaxed);
+    padding-block-end: 1.5rem;
+
+    p {
+      margin-block-end: 0.5rem;
+
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+/* =========================
+   PRODUCT HERO
+   Reuses layout classes from _cb_home_hero.scss (.hero-split, .hero-visual, etc.)
+   ========================= */
+
+.hero-h1 > span:not([class]) {
+  color: var(--col-orange);
+  font-style: italic;
+  font-weight: var(--fw-bold);
+}
+
+.hero-lede p:first-child {
+  font-size: var(--fs-lede);
+  font-weight: var(--fw-medium);
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(232, 104, 32, .12);
+    color: var(--col-orange);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}

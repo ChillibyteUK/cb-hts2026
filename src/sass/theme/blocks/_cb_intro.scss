@@ -59,4 +59,30 @@
       font-weight: var(--fw-semibold);
     }
   }
+
+  &-pillars {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--col-rule);
+    margin-top: 2rem;
+  }
+  &-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--col-white);
+    border: 1px solid var(--col-light-border);
+    font-size: var(--fs-body-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wider);
+    color: var(--col-navy);
+    svg {
+      width: 15px;
+      height: 15px;
+      color: var(--col-orange);
+    }
+  }
 }

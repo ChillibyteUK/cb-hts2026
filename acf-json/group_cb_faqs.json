@@ -1,0 +1,142 @@
+{
+  "key": "group_cb_faqs",
+  "title": "CB FAQs",
+  "fields": [
+    {
+      "key": "field_cb_faqs_message",
+      "label": "CB FAQs",
+      "name": "",
+      "aria-label": "",
+      "type": "message",
+      "message": "Add a title, optional intro, and a list of questions and answers.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+    {
+      "key": "field_cb_faqs_title",
+      "label": "Title",
+      "name": "title",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Wrap highlighted text in &lt;span&gt;.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 2,
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_cb_faqs_intro",
+      "label": "Intro",
+      "name": "intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_cb_faqs_faqs",
+      "label": "FAQs",
+      "name": "faqs",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add FAQ",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_cb_faqs_question",
+          "label": "Question",
+          "name": "question",
+          "aria-label": "",
+          "type": "textarea",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "rows": 2,
+          "placeholder": "",
+          "new_lines": ""
+        },
+        {
+          "key": "field_cb_faqs_answer",
+          "label": "Answer",
+          "name": "answer",
+          "aria-label": "",
+          "type": "textarea",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "rows": 4,
+          "placeholder": "",
+          "new_lines": "br"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-faqs"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

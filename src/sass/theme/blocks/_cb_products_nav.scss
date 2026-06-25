@@ -1,0 +1,63 @@
+.products-nav {
+  padding-block: clamp(5rem, 10vw, 8.75rem);
+  background: var(--col-white);
+
+  &-header {
+    margin-block-end: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  &-headline {
+    color: var(--col-navy);
+    max-inline-size: 37.5rem;
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+    }
+  }
+
+  .swiper {
+    padding-block-end: 4.5rem;
+    padding-inline: 3rem;
+  }
+
+  .swiper-slide {
+    block-size: auto;
+
+    > .product-card {
+      block-size: 100%;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    --swiper-navigation-size: 1.25rem;
+
+    inset-block-start: auto;
+    inset-block-end: 0.75rem;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border-radius: 50%;
+    background: var(--col-navy);
+    color: var(--col-white);
+    transition: background var(--transition);
+
+    &:hover {
+      background: var(--col-orange);
+    }
+
+    &::after {
+      font-size: var(--swiper-navigation-size);
+      font-weight: var(--fw-bold);
+    }
+  }
+
+  .swiper-button-prev {
+    inset-inline-start: 0;
+  }
+
+  .swiper-button-next {
+    inset-inline-start: 3.25rem;
+    inset-inline-end: auto;
+  }
+}

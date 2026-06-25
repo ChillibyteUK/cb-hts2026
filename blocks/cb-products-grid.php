@@ -58,13 +58,20 @@ $products = new WP_Query(
 					$card_intro  = get_field( 'card_intro', $the_post_id );
 					$has_url     = (bool) trim( get_the_content() );
 					$el          = $has_url ? 'a' : 'div';
-					$attrs       = $has_url ? ' href="' . esc_url( get_permalink() ) . '"' : '';
 					$classes     = 'product-card';
 					if ( $has_url ) {
 						$classes .= ' product-card--linked';
 					}
 					?>
-					<<?= esc_attr( $el ); ?> class="<?= esc_attr( $classes ); ?>"<?= esc_attr( $attrs ); ?>>
+					<<?= esc_attr( $el ); ?> class="<?= esc_attr( $classes ); ?>"
+					<?php
+					if ( $has_url ) {
+						?>
+						href="<?= esc_url( get_permalink() ); ?>"
+						<?php
+					}
+					?>
+					>
 						<div class="product-card-img-wrap">
 							<?php
 							if ( $card_tag ) {
@@ -98,7 +105,7 @@ $products = new WP_Query(
 							if ( $has_url ) {
 								?>
 							<span class="product-card-link">
-								Specification
+								View Product
 								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
 									<path d="M5 12h14M12 5l7 7-7 7"/>
 								</svg>

@@ -72,7 +72,10 @@ function cb_register_post_types() {
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'capability_type'     => 'post',
 			'map_meta_cap'        => true,
-			'rewrite'             => array( 'slug' => 'products' ),
+			'rewrite'             => array(
+				'slug'       => 'products',
+				'with_front' => false,
+			),
 		)
 	);
 
@@ -108,3 +111,29 @@ function cb_register_post_types() {
 }
 
 add_action( 'init', 'cb_register_post_types' );
+
+/**
+ * Use the page template for single product views.
+ *
+ * @param string $template Path to the template file.
+ * @return string
+ */
+function cb_product_single_template( $template ) {
+	if ( is_singular( 'product' ) ) {
+		$page_template = locate_template( 'page.php' );
+		if ( $page_template ) {
+			return $page_template;
+		}
+	}
+	return $template;
+}
+add_filter( 'single_template', 'cb_product_single_template' );
+
+/**
+ * Flush rewrite rules on theme activation so the /products slug works.
+ */
+function cb_flush_rewrites() {
+	cb_register_post_types();
+	flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'cb_flush_rewrites' );

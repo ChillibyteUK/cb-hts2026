@@ -1,0 +1,76 @@
+{
+  "key": "group_cb_products_nav",
+  "title": "CB Products Nav",
+  "fields": [
+    {
+      "key": "field_cb_products_nav_message",
+      "label": "CB Products Nav",
+      "name": "",
+      "aria-label": "",
+      "type": "message",
+      "message": "Displays a swiper slider of product cards, excluding the current product if on a product page.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+    {
+      "key": "field_cb_products_nav_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_cb_products_nav_headline",
+      "label": "Headline",
+      "name": "headline",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Wrap highlighted text in &lt;span&gt;.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 2,
+      "placeholder": "",
+      "new_lines": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-products-nav"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
