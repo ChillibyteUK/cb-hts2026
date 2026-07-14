@@ -20,8 +20,12 @@ $headline_allowed = array(
 $br_allowed = array(
 	'br' => array(),
 );
+
+$bg = ! empty( $block['backgroundColor'] ) ? 'has-' . $block['backgroundColor'] . '-background-color' : 'has-paper-background-color';
+
 ?>
 <section class="specs" id="specs">
+	<div class="specs-watermark" aria-hidden="true"></div>
 	<div class="container">
 		<div class="row g-5 g-xl-6 align-items-start">
 			<div class="col-lg-5">
@@ -72,3 +76,39 @@ $br_allowed = array(
 		</div>
 	</div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (
+		!('IntersectionObserver' in window) ||
+		window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	) {
+		return;
+	}
+
+	var section = document.getElementById('specs');
+
+	if (!section) {
+		return;
+	}
+
+	var observer = new IntersectionObserver(
+		function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) {
+					return;
+				}
+
+				section.classList.add('is-in-view');
+				observer.disconnect();
+			});
+		},
+		{
+			threshold: 0.2,
+			rootMargin: '0px 0px -10% 0px',
+		}
+	);
+
+	observer.observe(section);
+});
+</script>

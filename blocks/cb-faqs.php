@@ -110,6 +110,7 @@ $br_allowed = array(
 $accordion_id = wp_unique_id( 'faq-accordion-' );
 ?>
 <section class="faq <?= esc_attr( trim( $bg . ' ' . $fg . ' ' . $line_class . ' ' . $extra ) ); ?>" id="<?= esc_attr( $section_id ); ?>">
+	<div class="faq-watermark" aria-hidden="true"></div>
 	<div class="container">
 		<div class="faq-header">
 			<div class="eyebrow eyebrow--plain center">FAQs</div>
@@ -147,3 +148,39 @@ $accordion_id = wp_unique_id( 'faq-accordion-' );
 		</div>
 	</div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (
+		!('IntersectionObserver' in window) ||
+		window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	) {
+		return;
+	}
+
+	var section = document.getElementById('<?= esc_js( $section_id ); ?>');
+
+	if (!section) {
+		return;
+	}
+
+	var observer = new IntersectionObserver(
+		function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting) {
+					return;
+				}
+
+				section.classList.add('is-in-view');
+				observer.disconnect();
+			});
+		},
+		{
+			threshold: 0.2,
+			rootMargin: '0px 0px -10% 0px',
+		}
+	);
+
+	observer.observe(section);
+});
+</script>

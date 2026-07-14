@@ -15,7 +15,6 @@
     position: sticky;
     top: var(--h-top);
     height: 0;
-    margin-block-start: calc(-1 * var(--section-py));
     z-index: 0;
     pointer-events: none;
 

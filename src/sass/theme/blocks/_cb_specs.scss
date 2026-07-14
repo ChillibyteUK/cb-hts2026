@@ -1,7 +1,50 @@
 .specs {
+  position: relative;
+  overflow: clip;
   padding-block: clamp(5rem, 10vw, 8.75rem);
-  background: var(--col-paper);
+  // background: var(--col-paper);
   border-top: 1px solid var(--col-rule);
+  --specs-watermark-opacity: 0.02;
+  --specs-watermark-scale: 0.96;
+  --specs-watermark-shift: 1.5rem;
+
+  &-watermark {
+    position: sticky;
+    top: var(--h-top);
+    height: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    &::before {
+      content: "SPEC";
+      position: absolute;
+      inset-block-start: clamp(2rem, 7vw, 5rem);
+      inset-inline-end: clamp(0rem, 2vw, 2rem);
+      font-size: clamp(6rem, 19vw, 17.5rem);
+      font-weight: var(--fw-heavy);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: rgba(0, 60, 130, var(--specs-watermark-opacity));
+      transform: translate3d(0, var(--specs-watermark-shift), 0)
+        scale(var(--specs-watermark-scale));
+      transform-origin: top right;
+      transition:
+        color 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  &.is-in-view {
+    --specs-watermark-opacity: 0.04;
+    --specs-watermark-scale: 1;
+    --specs-watermark-shift: 0rem;
+  }
+
+  .container,
+  .row {
+    position: relative;
+    z-index: 1;
+  }
 
   &-headline {
     margin-block-end: 1.25rem;
@@ -74,6 +117,20 @@
       inline-size: auto;
       margin-block-end: 0.5rem;
       padding-inline-end: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .specs {
+    --specs-watermark-opacity: 0.04;
+    --specs-watermark-scale: 1;
+    --specs-watermark-shift: 0rem;
+
+    &-watermark {
+      &::before {
+        transition: none;
+      }
     }
   }
 }

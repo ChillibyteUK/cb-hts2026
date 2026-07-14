@@ -1,6 +1,48 @@
 .faq {
+  position: relative;
+  overflow: clip;
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-white);
+  --faq-watermark-opacity: 0.02;
+  --faq-watermark-scale: 0.96;
+  --faq-watermark-shift: 1.5rem;
+
+  &-watermark {
+    position: sticky;
+    top: var(--h-top);
+    height: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    &::before {
+      content: "FAQ";
+      position: absolute;
+      inset-block-start: clamp(2rem, 7vw, 5rem);
+      inset-inline-end: clamp(0rem, 2vw, 2rem);
+      font-size: clamp(6rem, 19vw, 17.5rem);
+      font-weight: var(--fw-heavy);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: rgba(0, 60, 130, var(--faq-watermark-opacity));
+      transform: translate3d(0, var(--faq-watermark-shift), 0)
+        scale(var(--faq-watermark-scale));
+      transform-origin: top right;
+      transition:
+        color 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  &.is-in-view {
+    --faq-watermark-opacity: 0.04;
+    --faq-watermark-scale: 1;
+    --faq-watermark-shift: 0rem;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
 
   &-header {
     margin-block-end: clamp(3rem, 7vw, 5rem);
@@ -34,6 +76,7 @@
     --bs-accordion-body-padding-y: 0 0 1.5rem;
     --bs-accordion-btn-color: var(--col-navy);
     --bs-accordion-active-color: var(--col-orange);
+    --bs-accordion-bg: transparent;
     --bs-accordion-active-bg: transparent;
     --bs-accordion-btn-focus-box-shadow: none;
     --bs-accordion-border-color: var(--col-light-border);
@@ -76,6 +119,20 @@
 
       &:last-child {
         margin-block-end: 0;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq {
+    --faq-watermark-opacity: 0.04;
+    --faq-watermark-scale: 1;
+    --faq-watermark-shift: 0rem;
+
+    &-watermark {
+      &::before {
+        transition: none;
       }
     }
   }

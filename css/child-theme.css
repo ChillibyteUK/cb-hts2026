@@ -261,8 +261,10 @@ p {
 }
 
 abbr[title] {
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
+  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
 }
 
@@ -2094,6 +2096,8 @@ progress {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2118,6 +2122,10 @@ progress {
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
+}
+.form-control::-moz-placeholder {
+  color: #6c757d;
+  opacity: 1;
 }
 .form-control::placeholder {
   color: #6c757d;
@@ -2242,6 +2250,8 @@ textarea.form-control-lg {
   border: 1px solid #ced4da;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2314,7 +2324,10 @@ textarea.form-control-lg {
   background-position: center;
   background-size: contain;
   border: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
@@ -2409,6 +2422,8 @@ textarea.form-control-lg {
   height: 1.5rem;
   padding: 0;
   background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 .form-range:focus {
@@ -2430,11 +2445,14 @@ textarea.form-control-lg {
   background-color: #27383a;
   border: 0;
   border-radius: 1rem;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
   appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-webkit-slider-thumb {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -2456,11 +2474,14 @@ textarea.form-control-lg {
   background-color: #27383a;
   border: 0;
   border-radius: 1rem;
+  -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -moz-appearance: none;
   appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-moz-range-thumb {
+    -moz-transition: none;
     transition: none;
   }
 }
@@ -2520,9 +2541,16 @@ textarea.form-control-lg {
 .form-floating > .form-control-plaintext {
   padding: 1rem 0.75rem;
 }
+.form-floating > .form-control::-moz-placeholder, .form-floating > .form-control-plaintext::-moz-placeholder {
+  color: transparent;
+}
 .form-floating > .form-control::placeholder,
 .form-floating > .form-control-plaintext::placeholder {
   color: transparent;
+}
+.form-floating > .form-control:not(:-moz-placeholder), .form-floating > .form-control-plaintext:not(:-moz-placeholder) {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
 }
 .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown),
 .form-floating > .form-control-plaintext:focus,
@@ -2538,6 +2566,10 @@ textarea.form-control-lg {
 .form-floating > .form-select {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
+}
+.form-floating > .form-control:not(:-moz-placeholder) ~ label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label,
@@ -2853,6 +2885,8 @@ textarea.form-control-lg {
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
   border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
   border-radius: var(--bs-btn-border-radius);
@@ -5213,6 +5247,8 @@ textarea.form-control-lg {
 }
 .btn-close:disabled, .btn-close.disabled {
   pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
   opacity: 0.25;
 }
@@ -5259,6 +5295,7 @@ textarea.form-control-lg {
   --bs-toast-zindex: 1090;
   position: absolute;
   z-index: var(--bs-toast-zindex);
+  width: -moz-max-content;
   width: max-content;
   max-width: 100%;
   pointer-events: none;
@@ -6640,13 +6677,16 @@ textarea.form-control-lg {
   }
 }
 .placeholder-wave {
+  -webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
+  -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
   animation: placeholder-wave 2s linear infinite;
 }
 
 @keyframes placeholder-wave {
   100% {
+    -webkit-mask-position: -200% 0%;
     mask-position: -200% 0%;
   }
 }
@@ -8211,14 +8251,20 @@ textarea.form-control-lg {
 }
 
 .user-select-all {
+  -webkit-user-select: all !important;
+  -moz-user-select: all !important;
   user-select: all !important;
 }
 
 .user-select-auto {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
   user-select: auto !important;
 }
 
 .user-select-none {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
   user-select: none !important;
 }
 
@@ -10969,6 +11015,8 @@ body {
   border: 1px solid #ced4da;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -22261,6 +22309,7 @@ strong {
 /* PRIMARY NAV */
 #wrapper-navbar {
   background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
   backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--col-light-border);
 }
@@ -22330,6 +22379,7 @@ strong {
     background: rgba(255, 255, 255, 0.98);
     border-block-start: 1px solid var(--col-light-border);
     box-shadow: 0 1.25rem 2.5rem rgba(15, 27, 51, 0.12);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
     backdrop-filter: saturate(160%) blur(10px);
   }
   #wrapper-navbar .navbar-nav .nav-link {
@@ -22556,6 +22606,7 @@ footer {
 .cb-post-card__image {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   display: block;
   transition: transform var(--transition);
@@ -22623,6 +22674,7 @@ footer {
 .cb-post__hero-img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   display: block;
 }
@@ -22704,6 +22756,7 @@ footer {
 .cb-post-sidebar__image {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   display: block;
   transition: transform var(--transition);
@@ -23470,6 +23523,7 @@ input, select, textarea {
   display: block;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   transform: translate3d(0, var(--hero-parallax-y), 0) scale(1.08);
   will-change: transform;
@@ -23558,6 +23612,7 @@ input, select, textarea {
   gap: 60px;
   white-space: nowrap;
   will-change: transform;
+  width: -moz-max-content;
   width: max-content;
   font-family: var(--ff-base);
   font-weight: var(--fw-bold);
@@ -23711,12 +23766,14 @@ input, select, textarea {
 .clients-strip .clients-marquee {
   flex: 1;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 .clients-strip .clients-track {
   display: flex;
   align-items: center;
   gap: var(--logo-gap);
+  width: -moz-max-content;
   width: max-content;
 }
 .clients-strip .client-logo {
@@ -23724,6 +23781,7 @@ input, select, textarea {
   flex: none;
   block-size: var(--logo-h);
   inline-size: calc(var(--logo-h) * 16 / 9);
+  -o-object-fit: contain;
   object-fit: contain;
 }
 @media (max-width: 768px) {
@@ -23810,7 +23868,9 @@ input, select, textarea {
   inline-size: 100%;
   block-size: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
   object-position: center;
   transition: transform 0.8s ease, opacity 0.3s ease;
 }
@@ -23957,6 +24017,7 @@ input, select, textarea {
 .config .config-img img {
   inline-size: 100%;
   block-size: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -24016,7 +24077,9 @@ input, select, textarea {
   display: block;
   width: 100%;
   height: 100% !important;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
   object-position: center;
   transition: transform 0.6s ease;
 }
@@ -24046,6 +24109,7 @@ input, select, textarea {
   justify-content: center;
   border-radius: 50%;
   background: rgba(15, 27, 51, 0.6);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   color: #fff;
   font-size: 0.8125rem;
@@ -24123,7 +24187,6 @@ input, select, textarea {
   position: sticky;
   top: var(--h-top);
   height: 0;
-  margin-block-start: calc(-1 * var(--section-py));
   z-index: 0;
   pointer-events: none;
 }
@@ -24230,6 +24293,7 @@ input, select, textarea {
 .why-split-left {
   position: sticky;
   top: var(--h-top);
+  height: -moz-fit-content;
   height: fit-content;
 }
 
@@ -24267,7 +24331,9 @@ input, select, textarea {
   display: block;
   inline-size: 100%;
   block-size: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
   object-position: center;
   transform: translate3d(0, var(--image-cta-parallax-y), 0) scale(1.08);
   will-change: transform;
@@ -24376,7 +24442,9 @@ input, select, textarea {
   inline-size: 100%;
   block-size: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
   object-position: center;
   opacity: 0.85;
   transition: transform 0.6s ease, opacity 0.3s ease;
@@ -24430,9 +24498,44 @@ input, select, textarea {
 }
 
 .specs {
+  position: relative;
+  overflow: clip;
   padding-block: clamp(5rem, 10vw, 8.75rem);
-  background: var(--col-paper);
   border-top: 1px solid var(--col-rule);
+  --specs-watermark-opacity: 0.02;
+  --specs-watermark-scale: 0.96;
+  --specs-watermark-shift: 1.5rem;
+}
+.specs-watermark {
+  position: sticky;
+  top: var(--h-top);
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.specs-watermark::before {
+  content: "SPEC";
+  position: absolute;
+  inset-block-start: clamp(2rem, 7vw, 5rem);
+  inset-inline-end: clamp(0rem, 2vw, 2rem);
+  font-size: clamp(6rem, 19vw, 17.5rem);
+  font-weight: var(--fw-heavy);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(0, 60, 130, var(--specs-watermark-opacity));
+  transform: translate3d(0, var(--specs-watermark-shift), 0) scale(var(--specs-watermark-scale));
+  transform-origin: top right;
+  transition: color 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.specs.is-in-view {
+  --specs-watermark-opacity: 0.04;
+  --specs-watermark-scale: 1;
+  --specs-watermark-shift: 0rem;
+}
+.specs .container, .specs .wp-block-group:not(.alignfull),
+.specs .row {
+  position: relative;
+  z-index: 1;
 }
 .specs-headline {
   margin-block-end: 1.25rem;
@@ -24496,6 +24599,16 @@ input, select, textarea {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .specs {
+    --specs-watermark-opacity: 0.04;
+    --specs-watermark-scale: 1;
+    --specs-watermark-shift: 0rem;
+  }
+  .specs-watermark::before {
+    transition: none;
+  }
+}
 .process {
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-white);
@@ -24867,6 +24980,7 @@ input, select, textarea {
 .client-gallery-item--small img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 @media (max-width: 767px) {
@@ -24907,8 +25021,43 @@ input, select, textarea {
 }
 
 .faq {
+  position: relative;
+  overflow: clip;
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-white);
+  --faq-watermark-opacity: 0.02;
+  --faq-watermark-scale: 0.96;
+  --faq-watermark-shift: 1.5rem;
+}
+.faq-watermark {
+  position: sticky;
+  top: var(--h-top);
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.faq-watermark::before {
+  content: "FAQ";
+  position: absolute;
+  inset-block-start: clamp(2rem, 7vw, 5rem);
+  inset-inline-end: clamp(0rem, 2vw, 2rem);
+  font-size: clamp(6rem, 19vw, 17.5rem);
+  font-weight: var(--fw-heavy);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(0, 60, 130, var(--faq-watermark-opacity));
+  transform: translate3d(0, var(--faq-watermark-shift), 0) scale(var(--faq-watermark-scale));
+  transform-origin: top right;
+  transition: color 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq.is-in-view {
+  --faq-watermark-opacity: 0.04;
+  --faq-watermark-scale: 1;
+  --faq-watermark-shift: 0rem;
+}
+.faq .container, .faq .wp-block-group:not(.alignfull) {
+  position: relative;
+  z-index: 1;
 }
 .faq-header {
   margin-block-end: clamp(3rem, 7vw, 5rem);
@@ -24938,6 +25087,7 @@ input, select, textarea {
   --bs-accordion-body-padding-y: 0 0 1.5rem;
   --bs-accordion-btn-color: var(--col-navy);
   --bs-accordion-active-color: var(--col-orange);
+  --bs-accordion-bg: transparent;
   --bs-accordion-active-bg: transparent;
   --bs-accordion-btn-focus-box-shadow: none;
   --bs-accordion-border-color: var(--col-light-border);
@@ -24976,6 +25126,16 @@ input, select, textarea {
   margin-block-end: 0;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .faq {
+    --faq-watermark-opacity: 0.04;
+    --faq-watermark-scale: 1;
+    --faq-watermark-shift: 0rem;
+  }
+  .faq-watermark::before {
+    transition: none;
+  }
+}
 .products-nav {
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-white);
@@ -25041,9 +25201,11 @@ body {
 
 @media (min-width: 992px) {
   .cols-lg-2 {
+    -moz-columns: 2;
     columns: 2;
   }
   .cols-lg-3 {
+    -moz-columns: 3;
     columns: 3;
   }
 }
