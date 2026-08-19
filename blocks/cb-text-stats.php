@@ -34,7 +34,7 @@ $br_allowed = array(
 				<?php
 				if ( $eyebrow ) {
 					?>
-				<div class="eyebrow light"><?= esc_html( $eyebrow ); ?></div>
+				<div class="eyebrow eyebrow--light"><?= esc_html( $eyebrow ); ?></div>
 					<?php
 				}
 				if ( $headline ) {

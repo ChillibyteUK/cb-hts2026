@@ -1,6 +1,10 @@
 .parent {
   padding-block: clamp(5rem, 9vw, 6rem);
-  background: linear-gradient(135deg, var(--col-navy-60) 0%, #365d7f 100%);
+  background: linear-gradient(
+    135deg,
+    var(--col-navy-deep) 0%,
+    var(--col-navy-60) 100%
+  );
   border-block-start: 3px solid var(--col-orange);
   color: var(--col-white);
 
@@ -62,7 +66,7 @@
       position: relative;
       top: -0.75em;
       font-size: 0.55em;
-      color: var(--col-orange);
+      color: var(--col-orange-bright);
       vertical-align: baseline;
       margin-inline-start: 0.05em;
       font-weight: var(--fw-bold);

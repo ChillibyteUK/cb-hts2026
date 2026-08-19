@@ -83,6 +83,11 @@ body,
       display: none;
     }
   }
+
+  /* For eyebrows on dark backgrounds. */
+  &--light {
+    color: var(--col-orange-bright);
+  }
 }
 
 .label-meta {
