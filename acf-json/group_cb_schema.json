@@ -1,0 +1,77 @@
+{
+    "key": "group_cb_schema",
+    "title": "Schema Markup",
+    "fields": [
+        {
+            "key": "field_cb_schema_jsonld",
+            "label": "JSON-LD Schema",
+            "name": "cb_schema_jsonld",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Page-level JSON-LD, output in the &lt;head&gt;. Paste a single object, an array of objects, or an @graph wrapper — the outer &lt;script&gt; tag is added automatically, so do not include it.\r\n\r\nYoast still outputs WebPage, WebSite and BreadcrumbList, so those are not needed here. An Organization node must use \"@id\": \"[home_url]#organization\" — the exact value is shown if you save without it.\r\n\r\nValidate the rendered page with the <a href=\"https:\/\/search.google.com\/test\/rich-results\" target=\"_blank\" rel=\"noopener\">Rich Results Test<\/a> or the <a href=\"https:\/\/validator.schema.org\/\" target=\"_blank\" rel=\"noopener\">Schema Markup Validator<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "cb-schema-jsonld",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 16,
+            "placeholder": "{\n    \"@context\": \"https:\/\/schema.org\",\n    \"@type\": \"Article\",\n    \"headline\": \"\"\n}",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "application"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
+            }
+        ]
+    ],
+    "menu_order": 99,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Hand-authored JSON-LD for this page.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1786000000
+}
