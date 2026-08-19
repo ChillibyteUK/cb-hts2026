@@ -24551,6 +24551,12 @@ input, select, textarea {
   font-size: var(--fs-body);
   line-height: 1.7;
 }
+.specs-left {
+  position: sticky;
+  top: var(--h-top);
+  height: -moz-fit-content;
+  height: fit-content;
+}
 .specs-table {
   inline-size: 100%;
   border-collapse: collapse;

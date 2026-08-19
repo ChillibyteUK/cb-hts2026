@@ -29,23 +29,25 @@ $bg = ! empty( $block['backgroundColor'] ) ? 'has-' . $block['backgroundColor'] 
 	<div class="container">
 		<div class="row g-5 g-xl-6 align-items-start">
 			<div class="col-lg-5">
-				<?php
-				if ( $eyebrow ) {
-					?>
-				<div class="eyebrow"><?= esc_html( $eyebrow ); ?></div>
+				<div class="specs-left">
 					<?php
-				}
-				if ( $headline ) {
+					if ( $eyebrow ) {
+						?>
+					<div class="eyebrow"><?= esc_html( $eyebrow ); ?></div>
+						<?php
+					}
+					if ( $headline ) {
+						?>
+					<h2 class="specs-headline h2"><?= wp_kses( $headline, $headline_allowed ); ?></h2>
+						<?php
+					}
+					if ( $intro ) {
+						?>
+					<div class="specs-intro prose-md"><?= wp_kses( $intro, $br_allowed ); ?></div>
+						<?php
+					}
 					?>
-				<h2 class="specs-headline h2"><?= wp_kses( $headline, $headline_allowed ); ?></h2>
-					<?php
-				}
-				if ( $intro ) {
-					?>
-				<div class="specs-intro prose-md"><?= wp_kses( $intro, $br_allowed ); ?></div>
-					<?php
-				}
-				?>
+				</div>
 			</div>
 
 			<div class="col-lg-7">
