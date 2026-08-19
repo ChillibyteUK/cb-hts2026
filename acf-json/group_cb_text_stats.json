@@ -13,6 +13,33 @@
       "esc_html": 0
     },
     {
+      "key": "field_cb_text_stats_variant",
+      "label": "Variant",
+      "name": "variant",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "\"Navy band\" is the standard section. \"Pull-quote\" renders the headline as a large quote on a paper background with the stats in a grid — the outcome band on a case study.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "dark": "Navy band",
+        "quote": "Pull-quote on paper"
+      },
+      "default_value": "dark",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_in_bindings": 1
+    },
+    {
       "key": "field_cb_text_stats_eyebrow",
       "label": "Eyebrow",
       "name": "eyebrow",

@@ -1,10 +1,10 @@
 {
-    "key": "group_cb_client_projects_gallery",
-    "title": "CB Client Projects Gallery",
+    "key": "group_cb_product_used",
+    "title": "CB Product Used",
     "fields": [
         {
-            "key": "field_cb_client_projects_gallery_title",
-            "label": "CB Client Projects Gallery",
+            "key": "field_cb_product_used_title",
+            "label": "CB Product Used",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -21,81 +21,82 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_cb_client_projects_gallery_layout",
-            "label": "Layout",
-            "name": "layout",
+            "key": "field_cb_product_used_product",
+            "label": "Product",
+            "name": "product",
             "aria-label": "",
-            "type": "select",
-            "instructions": "\"Mosaic\" repeats a five-tile rhythm. \"Feature\" leads with one large tile followed by half-width tiles, and shows media-library captions on hover — the project gallery on a case study.",
-            "required": 0,
+            "type": "post_object",
+            "instructions": "The product featured in this case study. Title, excerpt and featured image are pulled from it unless overridden below.",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "mosaic": "Mosaic",
-                "feature": "Feature tile"
-            },
-            "default_value": "mosaic",
-            "return_format": "value",
+            "post_type": [
+                "product"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "object",
             "multiple": 0,
             "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "allow_in_bindings": 1
+            "ui": 1,
+            "bidirectional": 0,
+            "bidirectional_target": []
         },
         {
-            "key": "field_6a3bf8f8b007e",
+            "key": "field_cb_product_used_eyebrow",
             "label": "Eyebrow",
             "name": "eyebrow",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Defaults to \"Product used in this case study\".",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 0,
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6a3bf903b007f",
+            "key": "field_cb_product_used_heading",
             "label": "Heading",
             "name": "heading",
             "aria-label": "",
             "type": "text",
-            "instructions": "Wrap in span tags to accent",
+            "instructions": "Defaults to the product title.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 0,
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6a3bf920b0080",
-            "label": "Intro",
-            "name": "intro",
+            "key": "field_cb_product_used_summary",
+            "label": "Summary",
+            "name": "summary",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Defaults to the product excerpt.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -105,18 +106,18 @@
             },
             "default_value": "",
             "maxlength": "",
-            "allow_in_bindings": 0,
-            "rows": 4,
+            "allow_in_bindings": 1,
+            "rows": 3,
             "placeholder": "",
-            "new_lines": "wpautop"
+            "new_lines": ""
         },
         {
-            "key": "field_6a3be80f1e077",
-            "label": "Images",
-            "name": "images",
+            "key": "field_cb_product_used_image",
+            "label": "Image",
+            "name": "image",
             "aria-label": "",
-            "type": "gallery",
-            "instructions": "",
+            "type": "image",
+            "instructions": "Defaults to the product featured image.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -124,10 +125,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
+            "return_format": "array",
             "library": "all",
-            "min": "",
-            "max": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -135,8 +134,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "insert": "append",
-            "preview_size": "medium"
+            "allow_in_bindings": 1,
+            "preview_size": "thumbnail"
         }
     ],
     "location": [
@@ -144,7 +143,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf/cb-client-projects-gallery"
+                "value": "acf/cb-product-used"
             }
         ]
     ],
@@ -156,9 +155,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "display_title": "",
-    "allow_ai_access": false,
-    "ai_description": "",
-    "modified": 1782315311
+    "show_in_rest": 0
 }

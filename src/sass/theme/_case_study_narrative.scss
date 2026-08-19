@@ -1,0 +1,64 @@
+/* =========================
+   CASE STUDY NARRATIVE
+   The narrative is built from core blocks inside the wide column of a Columns
+   block — heading, paragraph, list, image. This only supplies the two treatments
+   core has no equivalent for, registered as block styles in inc/cb-blocks.php:
+   a ticked feature list and a callout panel.
+   ========================= */
+
+/* Ticked list — core/list, "Ticked list" style. */
+.wp-block-list.is-style-cb-ticked {
+  --cb-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+
+  list-style: none;
+  padding-inline-start: 0;
+  border-block-start: 1px solid var(--col-rule);
+
+  li {
+    position: relative;
+    padding-block: 1.25rem;
+    padding-inline-start: 1.875rem;
+    border-block-end: 1px solid var(--col-rule);
+    color: var(--col-body);
+    font-size: var(--fs-body-md);
+    line-height: var(--lh-body);
+
+    /* Absolute, not a grid/flex child — inline content in the li (e.g. a
+       trailing text node after <strong>) would otherwise become its own
+       grid item and wrap into the icon column. */
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 1.5rem;
+      inline-size: 1.125rem;
+      block-size: 1.125rem;
+      background-color: var(--col-orange);
+      mask-image: var(--cb-check);
+      -webkit-mask-image: var(--cb-check);
+      mask-size: contain;
+      -webkit-mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+    }
+
+    strong {
+      color: var(--col-ink);
+      font-weight: var(--fw-semibold);
+    }
+  }
+}
+
+/* Callout — core/paragraph, "Callout" style. */
+.wp-block-paragraph.is-style-cb-callout,
+p.is-style-cb-callout {
+  padding: 1.875rem 2.125rem;
+  background: var(--col-navy-5);
+  border-inline-start: 3px solid var(--col-orange);
+  color: var(--col-ink);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-body);
+}

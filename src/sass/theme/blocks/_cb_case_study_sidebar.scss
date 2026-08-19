@@ -1,0 +1,60 @@
+/* =========================
+   CASE STUDY SIDEBAR
+   Standing project facts. Drop this into the narrow column of a core Columns
+   block, with the CB Case Study Section blocks in the wide column. It carries no
+   .container of its own — the Columns block supplies the geometry.
+   ========================= */
+
+.cs-sidebar {
+  display: block;
+  position: sticky;
+  top: 7rem;
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-block {
+    padding-block: 1.375rem;
+    border-block-start: 1px solid var(--col-rule);
+
+    &:last-of-type {
+      border-block-end: 1px solid var(--col-rule);
+    }
+  }
+
+  &-label {
+    margin-block-end: 0.5rem;
+    color: var(--col-muted);
+    font-size: var(--fs-nano);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: var(--tt-upper);
+  }
+
+  &-value {
+    color: var(--col-navy);
+    font-size: var(--fs-body-md);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-label);
+
+    a {
+      color: var(--col-orange);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-cta {
+    align-self: stretch;
+    justify-content: center;
+    margin-block-start: 1.625rem;
+  }
+
+  @media (max-width: 781px) {
+    position: static;
+  }
+}

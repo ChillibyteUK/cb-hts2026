@@ -81,3 +81,72 @@
     line-height: 1.4;
   }
 }
+
+/* ─── Pull-quote variant (case study outcome band) ─── */
+.parent--quote {
+  background: var(--col-paper);
+  border-block-start: 0;
+  color: var(--col-body);
+
+  .parent-h2 {
+    color: var(--col-navy);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-semibold);
+    line-height: 1.25;
+    letter-spacing: var(--ls-headline);
+    text-wrap: pretty;
+
+    > span {
+      color: var(--col-orange);
+      font-style: italic;
+      text-decoration: none;
+    }
+  }
+
+  .parent-body {
+    color: var(--col-body);
+  }
+
+  .parent-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    padding-inline-start: 0;
+    background: var(--col-rule);
+    border-inline-start: 0;
+
+    @media (max-width: 991px) {
+      padding-block-start: 0;
+      border-block-start: 0;
+    }
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .parent-stat {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.875rem 1.625rem;
+    background: var(--col-paper);
+  }
+
+  .parent-stat-num {
+    min-inline-size: 0;
+    color: var(--col-navy);
+    font-size: var(--fs-stat-xl);
+
+    sup {
+      color: var(--col-orange);
+    }
+  }
+
+  .parent-stat-label {
+    color: var(--col-muted);
+    font-size: var(--fs-caption);
+    letter-spacing: var(--ls-label);
+    text-transform: var(--tt-upper);
+  }
+}

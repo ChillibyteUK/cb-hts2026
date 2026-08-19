@@ -1,0 +1,126 @@
+{
+    "key": "group_cb_case_study_sidebar",
+    "title": "CB Case Study Sidebar",
+    "fields": [
+        {
+            "key": "field_cb_case_study_sidebar_title",
+            "label": "CB Case Study Sidebar",
+            "name": "title",
+            "type": "message"
+        },
+        {
+            "key": "field_cb_case_study_sidebar_items",
+            "label": "Facts",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Development, address, scheme, client — the standing facts for this project.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_cb_case_study_sidebar_item_label",
+            "button_label": "Add fact",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_cb_case_study_sidebar_item_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"Development\"",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_cb_case_study_sidebar_items"
+                },
+                {
+                    "key": "field_cb_case_study_sidebar_item_value",
+                    "label": "Value",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Newlines become line breaks.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "br",
+                    "parent_repeater": "field_cb_case_study_sidebar_items"
+                },
+                {
+                    "key": "field_cb_case_study_sidebar_item_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional. Replaces the value with a link.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_cb_case_study_sidebar_items"
+                }
+            ]
+        },
+        {
+            "key": "field_cb_case_study_sidebar_cta",
+            "label": "CTA",
+            "name": "cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Button at the foot of the sidebar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/cb-case-study-sidebar"
+            }
+        ]
+    ],
+    "active": 1,
+    "description": ""
+}

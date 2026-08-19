@@ -13,9 +13,94 @@
  * category, icon, render template, and supports various features.
  */
 function acf_blocks() {
-    if ( function_exists( 'acf_register_block_type' ) ) {
+	if ( function_exists( 'acf_register_block_type' ) ) {
 
 		// INSERT NEW BLOCKS HERE.
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_heading',
+				'title'           => __( 'CB Heading' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-heading.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_case_study_sidebar',
+				'title'           => __( 'CB Case Study Sidebar' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-case-study-sidebar.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_product_used',
+				'title'           => __( 'CB Product Used' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-product-used.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_related_projects',
+				'title'           => __( 'CB Related Projects' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-related-projects.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
+				'name'            => 'cb_spec_bar',
+				'title'           => __( 'CB Spec Bar' ),
+				'category'        => 'layout',
+				'icon'            => 'cover-image',
+				'render_template' => 'blocks/cb-spec-bar.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
 
 		acf_register_block_type(
 			array(
@@ -344,7 +429,7 @@ function acf_blocks() {
 			)
 		);
 
-    }
+	}
 }
 add_action( 'acf/init', 'acf_blocks' );
 
@@ -387,7 +472,7 @@ function core_block_type_args( $args, $name ) {
 		$args['render_callback'] = 'modify_core_add_container';
 	}
 
-    return $args;
+	return $args;
 }
 add_filter( 'register_block_type_args', 'core_block_type_args', 10, 3 );
 
@@ -397,13 +482,13 @@ add_filter( 'register_block_type_args', 'core_block_type_args', 10, 3 );
  * @return bool True if footer.php is being rendered, false otherwise.
  */
 function is_footer_rendering() {
-    $backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
-    foreach ( $backtrace as $trace ) {
-        if ( isset( $trace['file'] ) && basename( $trace['file'] ) === 'footer.php' ) {
-            return true;
-        }
-    }
-    return false;
+	$backtrace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
+	foreach ( $backtrace as $trace ) {
+		if ( isset( $trace['file'] ) && basename( $trace['file'] ) === 'footer.php' ) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
@@ -414,16 +499,43 @@ function is_footer_rendering() {
  * @return string The modified block content wrapped in a container div.
  */
 function modify_core_add_container( $attributes, $content ) {
-    if ( is_footer_rendering() ) {
-        return $content;
-    }
+	if ( is_footer_rendering() ) {
+		return $content;
+	}
 
-    ob_start();
-    ?>
-    <div class="container">
-        <?= wp_kses_post( $content ); ?>
-    </div>
+	ob_start();
+	?>
+	<div class="container">
+		<?= wp_kses_post( $content ); ?>
+	</div>
 	<?php
 	$content = ob_get_clean();
-    return $content;
+	return $content;
 }
+
+/**
+ * Register block styles for the case study narrative.
+ *
+ * The narrative is built from core blocks; these cover the two treatments core
+ * has no equivalent for. Styles live in src/sass/theme/_case_study_narrative.scss.
+ *
+ * @return void
+ */
+function cb_register_block_styles() {
+	register_block_style(
+		'core/list',
+		array(
+			'name'  => 'cb-ticked',
+			'label' => __( 'Ticked list' ),
+		)
+	);
+
+	register_block_style(
+		'core/paragraph',
+		array(
+			'name'  => 'cb-callout',
+			'label' => __( 'Callout' ),
+		)
+	);
+}
+add_action( 'init', 'cb_register_block_styles' );

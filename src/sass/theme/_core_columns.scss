@@ -1,0 +1,42 @@
+/* =========================
+   CORE COLUMNS — front end only
+   functions.php dequeues wp-block-library on wp_enqueue_scripts, so the Columns
+   block loses its layout on the front end. The editor keeps core's own styles,
+   so nothing here needs an .editor-styles-wrapper equivalent.
+
+   Columns deliberately stay equal height (default align-items: stretch) so a
+   sticky child — e.g. CB Case Study Sidebar — has room to travel.
+   ========================= */
+
+.wp-block-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 4vw, 5.5rem);
+
+  /* Give a plain (non-aligned) columns block the same geometry as .container. */
+  &:not(.alignfull):not(.alignwide) {
+    @include make-container();
+
+    @each $breakpoint, $container-max-width in $container-max-widths {
+      @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+        max-width: $container-max-width;
+      }
+    }
+  }
+
+  /* Core's own stacking breakpoint. */
+  @media (max-width: 781px) {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+
+.wp-block-column {
+  flex: 1 1 0%;
+  min-inline-size: 0;
+
+  /* Core emits an inline flex-basis when an explicit width is set. */
+  &[style*="flex-basis"] {
+    flex-grow: 0;
+  }
+}

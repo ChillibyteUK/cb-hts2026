@@ -1,24 +1,24 @@
 {
     "key": "group_cb_product_hero",
-    "title": "CB Product Hero",
+    "title": "CB Product \/ Project Hero",
     "fields": [
         {
             "key": "field_cb_product_hero_title",
-            "label": "CB Product Hero",
+            "label": "CB Product \/ Project Hero",
             "name": "",
             "aria-label": "",
             "type": "message",
             "instructions": "",
             "required": 0,
-            "conditional_logic": false,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "message": "",
-            "esc_html": 0,
-            "new_lines": "wpautop"
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
             "key": "field_cb_product_hero_meta_items",
@@ -69,18 +69,19 @@
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
-            "required": false,
-            "conditional_logic": false,
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "tabs": "visual",
+            "default_value": "",
+            "allow_in_bindings": 1,
+            "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0,
-            "delay": 0,
-            "default_value": ""
+            "delay": 0
         },
         {
             "key": "field_cb_product_hero_bullets",
@@ -248,5 +249,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1782304243
+    "modified": 1787146764
 }

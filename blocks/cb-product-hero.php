@@ -2,152 +2,45 @@
 /**
  * Block template for CB Product Hero.
  *
+ * Markup lives in template-parts/hero-split.php, shared with single-project.php.
+ *
  * @package cb-hts2026
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$block_id      = $block['anchor'] ?? $block['id'] ?? wp_unique_id( 'cb-product-hero-' );
-$eyebrow       = get_field( 'meta_items' );
-$h1            = get_field( 'h1' );
-$lede          = get_field( 'lede' );
-$bullets       = get_field( 'bullets' );
-$cta_primary   = get_field( 'cta_primary' );
-$cta_secondary = get_field( 'cta_secondary' );
-$image         = get_field( 'image' );
-$badge_number  = get_field( 'badge_number' );
-$badge_suffix  = get_field( 'badge_suffix' );
-$badge_label   = get_field( 'badge_label' );
+$block_id = $block['anchor'] ?? $block['id'] ?? wp_unique_id( 'cb-product-hero-' );
+$image    = get_field( 'image' );
 
-$classes = 'hero';
+$classes = array();
+
 if ( ! empty( $block['className'] ) ) {
-	$classes .= ' ' . $block['className'];
+	$classes[] = $block['className'];
 }
 if ( ! empty( $block['align'] ) ) {
-	$classes .= ' align' . $block['align'];
+	$classes[] = 'align' . $block['align'];
 }
+
+get_template_part(
+	'template-parts/hero-split',
+	null,
+	array(
+		'id'            => $block_id,
+		'classes'       => implode( ' ', $classes ),
+		'tag'           => get_field( 'meta_items' ),
+		'h1'            => get_field( 'h1' ),
+		'subtitle'      => get_field( 'sub' ),
+		'lede'          => get_field( 'lede' ),
+		'bullets'       => get_field( 'bullets' ),
+		'image_id'      => ! empty( $image['ID'] ) ? (int) $image['ID'] : 0,
+		'badge_number'  => get_field( 'badge_number' ),
+		'badge_suffix'  => get_field( 'badge_suffix' ),
+		'badge_label'   => get_field( 'badge_label' ),
+		'cta_primary'   => get_field( 'cta_primary' ),
+		'cta_secondary' => get_field( 'cta_secondary' ),
+	)
+);
 ?>
-<section id="<?= esc_attr( $block_id ); ?>" class="<?= esc_attr( $classes ); ?>">
-	<div class="container">
-		<div class="hero-split">
-			<div class="hero-content">
-				<?php
-				if ( $eyebrow ) {
-					?>
-					<div class="hero-tag"><?= esc_html( $eyebrow ); ?></div>
-					<?php
-				}
-
-				if ( $h1 ) {
-					?>
-					<h1 class="hero-h1"><?= wp_kses( $h1, array( 'span' => array() ) ); ?></h1>
-					<?php
-				}
-
-				if ( $lede ) {
-					?>
-					<div class="hero-lede"><?= wp_kses_post( $lede ); ?></div>
-					<?php
-				}
-
-				if ( $bullets ) {
-					?>
-					<ul class="hero-bullets">
-						<?= wp_kses_post( cb_list( $bullets ) ); ?>
-					</ul>
-					<?php
-				}
-
-				if ( $cta_primary || $cta_secondary ) {
-					?>
-					<div class="hero-actions">
-						<?php
-						if ( $cta_primary ) {
-							?>
-							<a href="<?= esc_url( $cta_primary['url'] ); ?>"
-								class="btn btn-primary"
-								<?php
-								if ( ! empty( $cta_primary['target'] ) ) {
-									?>
-								target="<?= esc_attr( $cta_primary['target'] ); ?>" rel="noopener"
-									<?php
-								}
-								?>
-								>
-								<?= esc_html( $cta_primary['title'] ); ?>
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-							</a>
-							<?php
-						}
-						if ( $cta_secondary ) {
-							?>
-							<a href="<?= esc_url( $cta_secondary['url'] ); ?>"
-								class="btn btn-outline-dark"
-								<?php
-								if ( ! empty( $cta_secondary['target'] ) ) {
-									?>
-								target="<?= esc_attr( $cta_secondary['target'] ); ?>" rel="noopener"
-									<?php
-								}
-								?>
-								>
-								<?= esc_html( $cta_secondary['title'] ); ?>
-							</a>
-							<?php
-						}
-						?>
-					</div>
-					<?php
-				}
-				?>
-
-			</div>
-
-			<div class="hero-visual">
-				<?php
-				if ( $image ) {
-					?>
-					<div class="hero-img-wrap">
-						<?= wp_get_attachment_image( $image['ID'], 'full', false, array( 'class' => 'hero-img' ) ); ?>
-					</div>
-					<?php
-				}
-
-				if ( $badge_number || $badge_label ) {
-					?>
-					<div class="hero-badge">
-						<div>
-							<?php
-							if ( $badge_number ) {
-								?>
-								<div class="hero-badge-num">
-									<?= esc_html( $badge_number ); ?>
-									<?php
-									if ( $badge_suffix ) {
-										?>
-									<sup><?= esc_html( $badge_suffix ); ?></sup>
-										<?php
-									}
-									?>
-								</div>
-								<?php
-							}
-							if ( $badge_label ) {
-								?>
-								<div class="hero-badge-label"><?= wp_kses( $badge_label, array( 'br' => array() ) ); ?></div>
-								<?php
-							}
-							?>
-						</div>
-					</div>
-					<?php
-				}
-				?>
-			</div>
-
-	</div>
-</div>
-</section>
 
 <?php if ( $image ) : ?>
 <script>

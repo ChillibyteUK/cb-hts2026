@@ -22782,6 +22782,189 @@ footer {
   line-height: var(--lh-500);
 }
 
+/* =========================
+   CASE STUDY CHROME
+   Breadcrumb bar and hero subtitle. Every section of a case study is a block
+   and is styled with that block.
+   ========================= */
+/* ─── Breadcrumb bar ─── */
+.crumb {
+  background: var(--col-white);
+  border-block-end: 1px solid var(--col-light-border);
+}
+.crumb-inner {
+  padding-block: 1rem;
+}
+.crumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-block: 0;
+  padding-inline-start: 0;
+  list-style: none;
+  color: var(--col-muted);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-wide);
+}
+.crumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  /* Separator, so it isn't a text node in the flex row. */
+}
+.crumb-item + .crumb-item::before {
+  content: "/";
+  color: var(--col-navy-25);
+}
+.crumb-item a {
+  color: var(--col-muted);
+}
+.crumb-item a:hover {
+  color: var(--col-orange);
+}
+.crumb-current {
+  color: var(--col-navy);
+  font-weight: var(--fw-semibold);
+}
+
+/* ─── Hero subtitle (also available to the product hero block) ─── */
+.hero-sub {
+  margin-block: 0 1.5rem;
+  color: var(--col-ink);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--ls-snug);
+  text-wrap: pretty;
+}
+
+/* =========================
+   CORE COLUMNS — front end only
+   functions.php dequeues wp-block-library on wp_enqueue_scripts, so the Columns
+   block loses its layout on the front end. The editor keeps core's own styles,
+   so nothing here needs an .editor-styles-wrapper equivalent.
+
+   Columns deliberately stay equal height (default align-items: stretch) so a
+   sticky child — e.g. CB Case Study Sidebar — has room to travel.
+   ========================= */
+.wp-block-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 4vw, 5.5rem);
+  /* Give a plain (non-aligned) columns block the same geometry as .container. */
+  /* Core's own stacking breakpoint. */
+}
+.wp-block-columns:not(.alignfull):not(.alignwide) {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .wp-block-columns:not(.alignfull):not(.alignwide) {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .wp-block-columns:not(.alignfull):not(.alignwide) {
+    max-width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .wp-block-columns:not(.alignfull):not(.alignwide) {
+    max-width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .wp-block-columns:not(.alignfull):not(.alignwide) {
+    max-width: 1170px;
+  }
+}
+@media (min-width: 1400px) {
+  .wp-block-columns:not(.alignfull):not(.alignwide) {
+    max-width: 1360px;
+  }
+}
+@media (max-width: 781px) {
+  .wp-block-columns {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+
+.wp-block-column {
+  flex: 1 1 0%;
+  min-inline-size: 0;
+  /* Core emits an inline flex-basis when an explicit width is set. */
+}
+.wp-block-column[style*=flex-basis] {
+  flex-grow: 0;
+}
+
+/* =========================
+   CASE STUDY NARRATIVE
+   The narrative is built from core blocks inside the wide column of a Columns
+   block — heading, paragraph, list, image. This only supplies the two treatments
+   core has no equivalent for, registered as block styles in inc/cb-blocks.php:
+   a ticked feature list and a callout panel.
+   ========================= */
+/* Ticked list — core/list, "Ticked list" style. */
+.wp-block-list.is-style-cb-ticked {
+  --cb-check: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  list-style: none;
+  padding-inline-start: 0;
+  border-block-start: 1px solid var(--col-rule);
+}
+.wp-block-list.is-style-cb-ticked li {
+  position: relative;
+  padding-block: 1.25rem;
+  padding-inline-start: 1.875rem;
+  border-block-end: 1px solid var(--col-rule);
+  color: var(--col-body);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-body);
+  /* Absolute, not a grid/flex child — inline content in the li (e.g. a
+     trailing text node after <strong>) would otherwise become its own
+     grid item and wrap into the icon column. */
+}
+.wp-block-list.is-style-cb-ticked li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 1.5rem;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  background-color: var(--col-orange);
+  mask-image: var(--cb-check);
+  -webkit-mask-image: var(--cb-check);
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+}
+.wp-block-list.is-style-cb-ticked li strong {
+  color: var(--col-ink);
+  font-weight: var(--fw-semibold);
+}
+
+/* Callout — core/paragraph, "Callout" style. */
+.wp-block-paragraph.is-style-cb-callout,
+p.is-style-cb-callout {
+  padding: 1.875rem 2.125rem;
+  background: var(--col-navy-5);
+  border-inline-start: 3px solid var(--col-orange);
+  color: var(--col-ink);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-body);
+}
+
 .skip-link {
   position: absolute;
   top: -100px;
@@ -24821,6 +25004,69 @@ input, select, textarea {
   line-height: 1.4;
 }
 
+/* ─── Pull-quote variant (case study outcome band) ─── */
+.parent--quote {
+  background: var(--col-paper);
+  border-block-start: 0;
+  color: var(--col-body);
+}
+.parent--quote .parent-h2 {
+  color: var(--col-navy);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+  letter-spacing: var(--ls-headline);
+  text-wrap: pretty;
+}
+.parent--quote .parent-h2 > span {
+  color: var(--col-orange);
+  font-style: italic;
+  text-decoration: none;
+}
+.parent--quote .parent-body {
+  color: var(--col-body);
+}
+.parent--quote .parent-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  padding-inline-start: 0;
+  background: var(--col-rule);
+  border-inline-start: 0;
+}
+@media (max-width: 991px) {
+  .parent--quote .parent-stats {
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+}
+@media (max-width: 540px) {
+  .parent--quote .parent-stats {
+    grid-template-columns: 1fr;
+  }
+}
+.parent--quote .parent-stat {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.875rem 1.625rem;
+  background: var(--col-paper);
+}
+.parent--quote .parent-stat-num {
+  min-inline-size: 0;
+  color: var(--col-navy);
+  font-size: var(--fs-stat-xl);
+}
+.parent--quote .parent-stat-num sup {
+  color: var(--col-orange);
+}
+.parent--quote .parent-stat-label {
+  color: var(--col-muted);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-label);
+  text-transform: var(--tt-upper);
+}
+
 .contact {
   padding-block: clamp(5rem, 10vw, 8.75rem);
   background: var(--col-white);
@@ -25030,6 +25276,92 @@ input, select, textarea {
   line-height: var(--lh-relaxed);
 }
 
+/* ─── Feature-tile layout (case study project gallery) ─── */
+.client-gallery-grid--feature {
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 12.5rem;
+  gap: 0.875rem;
+}
+@media (max-width: 1100px) {
+  .client-gallery-grid--feature {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .client-gallery-grid--feature {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 10rem;
+  }
+}
+.client-gallery-grid--feature .client-gallery-item--feature-tile {
+  grid-column: span 2;
+  background: var(--col-navy-5);
+  cursor: zoom-in;
+  /* Overrides the mosaic layout's mobile grid reset. */
+}
+@media (max-width: 767px) {
+  .client-gallery-grid--feature .client-gallery-item--feature-tile {
+    grid-column: span 2 !important;
+    grid-row: span 1 !important;
+    aspect-ratio: auto;
+  }
+}
+.client-gallery-grid--feature .client-gallery-item--feature-tile img {
+  position: static;
+  inline-size: 100%;
+  block-size: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  transform: none;
+  transition: transform 0.5s ease;
+}
+.client-gallery-grid--feature .client-gallery-item--feature-tile:hover img, .client-gallery-grid--feature .client-gallery-item--feature-tile:focus-visible img {
+  transform: scale(1.04);
+}
+.client-gallery-grid--feature .client-gallery-item--lead {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+@media (max-width: 1100px) {
+  .client-gallery-grid--feature .client-gallery-item--lead {
+    grid-row: span 1;
+  }
+}
+@media (max-width: 680px) {
+  .client-gallery-grid--feature .client-gallery-item--lead {
+    grid-column: span 2;
+  }
+}
+.client-gallery-grid--feature .client-gallery-item-caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 2;
+  padding: 1.625rem 1.25rem 0.875rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 37, 88, 0.85));
+  color: var(--col-white);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.client-gallery-grid--feature .client-gallery-item--feature-tile:hover .client-gallery-item-caption,
+.client-gallery-grid--feature .client-gallery-item--feature-tile:focus-visible .client-gallery-item-caption {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-gallery-grid--feature .client-gallery-item--feature-tile img,
+  .client-gallery-grid--feature .client-gallery-item-caption {
+    transition: none;
+  }
+  .client-gallery-grid--feature .client-gallery-item--feature-tile:hover img {
+    transform: none;
+  }
+}
+
 .faq {
   position: relative;
   overflow: clip;
@@ -25200,6 +25532,312 @@ input, select, textarea {
   inset-inline-end: auto;
 }
 
+/* =========================
+   SPEC BAR
+   Navy key/value strip, sits directly under a hero.
+   ========================= */
+.spec-bar {
+  background: var(--col-navy);
+  border-block-end: 3px solid var(--col-orange);
+}
+.spec-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+@media (max-width: 1100px) {
+  .spec-bar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .spec-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.spec-bar-item {
+  background: var(--col-navy);
+  padding: 1.875rem 1.625rem;
+}
+@media (max-width: 680px) {
+  .spec-bar-item {
+    padding: 1.375rem 1.125rem;
+  }
+}
+.spec-bar-label {
+  margin-block-end: 0.625rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--fs-nano);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: var(--tt-upper);
+}
+.spec-bar-value {
+  color: var(--col-white);
+  font-size: var(--fs-h6);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.spec-bar-unit {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-body-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-normal);
+}
+
+/* =========================
+   RELATED PROJECTS
+   Three-up case study cards.
+   ========================= */
+.related-projects {
+  padding-block: clamp(4.5rem, 9vw, 6.875rem);
+  background: var(--col-section-bg);
+}
+.related-projects-header {
+  margin-block-end: 2.5rem;
+}
+.related-projects-headline {
+  color: var(--col-navy);
+}
+.related-projects-headline > span {
+  color: var(--col-orange);
+  font-style: italic;
+}
+.related-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 1100px) {
+  .related-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .related-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--col-white);
+  border: 1px solid var(--col-light-border);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.related-project-card:hover, .related-project-card:focus-visible {
+  box-shadow: 0 1.25rem 2.75rem rgba(0, 60, 130, 0.12);
+  transform: translateY(-3px);
+}
+.related-project-card-img {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 16/10;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+.related-project-card-body {
+  padding: 1.625rem 1.75rem 1.875rem;
+}
+.related-project-card-meta {
+  margin-block-end: 0.625rem;
+  color: var(--col-orange);
+  font-size: var(--fs-nano);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: var(--tt-upper);
+}
+.related-project-card-title {
+  margin-block-end: 0.5rem;
+  color: var(--col-navy);
+  font-size: var(--fs-card-title);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-tight);
+  text-wrap: pretty;
+}
+.related-project-card-summary {
+  margin-block: 0;
+  color: var(--col-muted);
+  font-size: var(--fs-body-xs);
+  line-height: var(--lh-body);
+}
+@media (prefers-reduced-motion: reduce) {
+  .related-project-card {
+    transition: none;
+  }
+  .related-project-card:hover, .related-project-card:focus-visible {
+    transform: none;
+  }
+}
+
+/* =========================
+   PRODUCT USED
+   Single linked card promoting the product featured in a case study.
+   ========================= */
+.product-used {
+  padding-block: clamp(3.5rem, 7vw, 5rem);
+  background: var(--col-white);
+}
+.product-used-card {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  background: var(--col-navy-5);
+  border: 1px solid var(--col-light-border);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease;
+}
+.product-used-card:hover, .product-used-card:focus-visible {
+  box-shadow: 0 1.375rem 3.375rem rgba(0, 60, 130, 0.14);
+}
+@media (max-width: 1100px) {
+  .product-used-card {
+    grid-template-columns: 1fr;
+  }
+}
+.product-used-media {
+  overflow: hidden;
+}
+.product-used-img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 17.5rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+@media (max-width: 1100px) {
+  .product-used-img {
+    min-block-size: 0;
+    aspect-ratio: 16/9;
+  }
+}
+.product-used-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 3rem);
+}
+.product-used-eyebrow {
+  margin-block-end: 0.875rem;
+  color: var(--col-orange);
+}
+.product-used-title {
+  margin-block-end: 0.875rem;
+  color: var(--col-navy);
+}
+.product-used-summary {
+  max-inline-size: 32.5rem;
+  margin-block: 0 1.5rem;
+  color: var(--col-body);
+  font-size: var(--fs-body-md);
+  line-height: var(--lh-relaxed);
+}
+.product-used-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--col-navy);
+  font-size: var(--fs-meta);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-widest);
+  text-transform: var(--tt-upper);
+}
+.product-used-link svg {
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+.product-used-card:hover .product-used-link {
+  color: var(--col-orange);
+}
+.product-used-card:hover .product-used-link svg {
+  transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-used-link svg {
+    transition: none;
+  }
+  .product-used-card:hover .product-used-link svg {
+    transform: none;
+  }
+}
+
+/* =========================
+   CASE STUDY SIDEBAR
+   Standing project facts. Drop this into the narrow column of a core Columns
+   block, with the CB Case Study Section blocks in the wide column. It carries no
+   .container of its own — the Columns block supplies the geometry.
+   ========================= */
+.cs-sidebar {
+  display: block;
+  position: sticky;
+  top: 7rem;
+}
+.cs-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+}
+.cs-sidebar-block {
+  padding-block: 1.375rem;
+  border-block-start: 1px solid var(--col-rule);
+}
+.cs-sidebar-block:last-of-type {
+  border-block-end: 1px solid var(--col-rule);
+}
+.cs-sidebar-label {
+  margin-block-end: 0.5rem;
+  color: var(--col-muted);
+  font-size: var(--fs-nano);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: var(--tt-upper);
+}
+.cs-sidebar-value {
+  color: var(--col-navy);
+  font-size: var(--fs-body-md);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-label);
+}
+.cs-sidebar-value a {
+  color: var(--col-orange);
+}
+.cs-sidebar-value a:hover {
+  text-decoration: underline;
+}
+.cs-sidebar-cta {
+  align-self: stretch;
+  justify-content: center;
+  margin-block-start: 1.625rem;
+}
+@media (max-width: 781px) {
+  .cs-sidebar {
+    position: static;
+  }
+}
+
+/* =========================
+   HEADING
+   Carries the theme's <span> accent. Sizing comes from the .h1–.h6 classes.
+   ========================= */
+.cb-heading {
+  margin-block-end: 1.625rem;
+  color: var(--col-navy);
+}
+.cb-heading > span {
+  color: var(--col-orange);
+  font-style: italic;
+}
+
 html {
   scrollbar-gutter: stable;
 }
@@ -25268,7 +25906,9 @@ section[id] {
   padding-inline: 0;
 }
 
-.container .container, .wp-block-group:not(.alignfull) .container, .container .wp-block-group:not(.alignfull), .wp-block-group:not(.alignfull) .wp-block-group:not(.alignfull) {
+.container .container, .wp-block-group:not(.alignfull) .container, .container .wp-block-group:not(.alignfull), .wp-block-group:not(.alignfull) .wp-block-group:not(.alignfull),
+.wp-block-column .container,
+.wp-block-column .wp-block-group:not(.alignfull) {
   padding-inline: 0;
 }
 

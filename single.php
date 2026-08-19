@@ -11,9 +11,7 @@ get_header();
 <main id="main" class="cb-post">
 	<div class="container pt-4 pb-5">
 		<?php
-		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			yoast_breadcrumb( '<div id="breadcrumbs" class="mb-4">', '</div>' );
-		}
+		get_template_part( 'template-parts/breadcrumb' );
 		?>
 		<div class="row">
 			<div class="col-lg-8">

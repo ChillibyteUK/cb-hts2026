@@ -4,6 +4,9 @@
 @import "header";
 @import "footer";
 @import "blog";
+@import "case_study";
+@import "core_columns";
+@import "case_study_narrative";
 @import "a11y";
 @import "search";
 @import "forms";
@@ -78,7 +81,8 @@ section[id] {
   }
 }
 
-.container .container {
+.container .container,
+.wp-block-column .container {
   padding-inline: 0;
 }
 

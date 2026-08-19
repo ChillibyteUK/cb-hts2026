@@ -1349,3 +1349,153 @@ function cb_sanitise_svg( $svg_source, $classes = '', $width = '', $height = '' 
 
 	return wp_kses( $svg_markup, $allowed_svg_tags );
 }
+
+/**
+ * Get the display category for a project.
+ *
+ * Prefers the dedicated `project_cat` taxonomy, falling back to `application_cat`.
+ *
+ * @param int $post_id Project post ID.
+ * @return string Term name, or an empty string when the project is uncategorised.
+ */
+function cb_project_category_name( $post_id ) {
+	foreach ( array( 'project_cat', 'application_cat' ) as $taxonomy ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			$term = reset( $terms );
+			return $term->name;
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Resolve a set of related projects.
+ *
+ * Hand-picked projects win. Otherwise projects sharing a `project_cat` term with
+ * the current post are used, topped up with the most recent projects if that
+ * leaves fewer than requested.
+ *
+ * @param array|null $manual Hand-picked project posts or IDs.
+ * @param int        $limit  Maximum number of projects to return.
+ * @return WP_Post[] Ordered list of project posts.
+ */
+function cb_get_related_projects( $manual = null, $limit = 3 ) {
+	$limit = max( 1, (int) $limit );
+
+	if ( ! empty( $manual ) && is_array( $manual ) ) {
+		$picked = array();
+
+		foreach ( $manual as $item ) {
+			$project = $item instanceof WP_Post ? $item : get_post( (int) $item );
+
+			if ( $project instanceof WP_Post ) {
+				$picked[] = $project;
+			}
+		}
+
+		if ( $picked ) {
+			return array_slice( $picked, 0, $limit );
+		}
+	}
+
+	$current_id = is_singular( 'project' ) ? get_queried_object_id() : 0;
+	$exclude    = $current_id ? array( $current_id ) : array();
+	$collected  = array();
+
+	if ( $current_id ) {
+		$term_ids = wp_get_post_terms( $current_id, 'project_cat', array( 'fields' => 'ids' ) );
+
+		if ( ! is_wp_error( $term_ids ) && $term_ids ) {
+			$collected = get_posts(
+				array(
+					'post_type'           => 'project',
+					'posts_per_page'      => $limit,
+					'post__not_in'        => $exclude,
+					'ignore_sticky_posts' => true,
+					'tax_query'           => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+						array(
+							'taxonomy' => 'project_cat',
+							'field'    => 'term_id',
+							'terms'    => $term_ids,
+						),
+					),
+				)
+			);
+		}
+	}
+
+	if ( count( $collected ) < $limit ) {
+		$exclude = array_merge( $exclude, wp_list_pluck( $collected, 'ID' ) );
+
+		$topup = get_posts(
+			array(
+				'post_type'           => 'project',
+				'posts_per_page'      => $limit - count( $collected ),
+				'post__not_in'        => $exclude,
+				'ignore_sticky_posts' => true,
+				'orderby'             => 'date',
+				'order'               => 'DESC',
+			)
+		);
+
+		$collected = array_merge( $collected, $topup );
+	}
+
+	return array_slice( $collected, 0, $limit );
+}
+
+/**
+ * Build the breadcrumb trail for the current view.
+ *
+ * Derived from the request path: each URL segment becomes a crumb, linked only
+ * when it resolves to real content. Labels come from the resolved post title
+ * where there is one, otherwise from the slug. The last entry never carries a
+ * URL. Rendered by template-parts/breadcrumb.php.
+ *
+ * @return array<int, array{label: string, url: string}> Empty on the front page.
+ */
+function cb_get_breadcrumb_trail() {
+	if ( is_front_page() ) {
+		return array();
+	}
+
+	$home = home_url( '/' );
+	$path = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+	$path = (string) wp_parse_url( $path, PHP_URL_PATH );
+
+	// Drop the home path, so subdirectory installs don't leak into the trail.
+	$home_path = trim( (string) wp_parse_url( $home, PHP_URL_PATH ), '/' );
+
+	if ( '' !== $home_path && 0 === strpos( trim( $path, '/' ), $home_path ) ) {
+		$path = substr( trim( $path, '/' ), strlen( $home_path ) );
+	}
+
+	$segments = array_values( array_filter( explode( '/', trim( (string) $path, '/' ) ) ) );
+
+	$trail = array(
+		array(
+			'label' => 'Home',
+			'url'   => $home,
+		),
+	);
+
+	$url = rtrim( $home, '/' );
+	$max = count( $segments ) - 1;
+
+	foreach ( $segments as $index => $segment ) {
+		$url    .= '/' . $segment;
+		$post_id = url_to_postid( $url . '/' );
+		$label   = $post_id ? get_the_title( $post_id ) : ucwords( str_replace( '-', ' ', urldecode( $segment ) ) );
+
+		$trail[] = array(
+			// Only the final crumb is guaranteed to be the thing being viewed.
+			'label' => ( $index === $max && is_singular() ) ? get_the_title() : $label,
+			'url'   => ( $index === $max || ! $post_id ) ? '' : $url . '/',
+		);
+	}
+
+	return $trail;
+}

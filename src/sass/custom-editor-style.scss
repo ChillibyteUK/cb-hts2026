@@ -36,3 +36,9 @@
   font-size: $h1-font-size;
   font-weight: $headings-font-weight;
 }
+
+// Block styles registered in inc/cb-blocks.php (Ticked list, Callout). Shared
+// with the front-end bundle rather than duplicated — register_block_style's
+// inline_style can't be used here, as it attaches to the wp-block-library handle
+// that functions.php dequeues.
+@import "theme/case_study_narrative";

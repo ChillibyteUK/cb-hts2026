@@ -1,0 +1,14 @@
+/* =========================
+   HEADING
+   Carries the theme's <span> accent. Sizing comes from the .h1–.h6 classes.
+   ========================= */
+
+.cb-heading {
+  margin-block-end: 1.625rem;
+  color: var(--col-navy);
+
+  > span {
+    color: var(--col-orange);
+    font-style: italic;
+  }
+}
