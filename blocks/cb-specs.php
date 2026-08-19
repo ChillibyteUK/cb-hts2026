@@ -27,7 +27,7 @@ $bg = ! empty( $block['backgroundColor'] ) ? 'has-' . $block['backgroundColor'] 
 <section class="specs" id="specs">
 	<div class="specs-watermark" aria-hidden="true"></div>
 	<div class="container">
-		<div class="row g-5 g-xl-6 align-items-start">
+		<div class="row g-5 g-xl-6">
 			<div class="col-lg-5">
 				<div class="specs-left">
 					<?php
