@@ -1,0 +1,141 @@
+{
+  "key": "group_cb_projects_index",
+  "title": "CB Projects Index",
+  "fields": [
+    {
+      "key": "field_cb_projects_index_message",
+      "label": "CB Projects Index",
+      "name": "",
+      "aria-label": "",
+      "type": "message",
+      "message": "Lists every case study as a card grid, with an optional filter bar built from the Project Category taxonomy.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+    {
+      "key": "field_cb_projects_index_eyebrow",
+      "label": "Eyebrow",
+      "name": "eyebrow",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_cb_projects_index_headline",
+      "label": "Headline",
+      "name": "headline",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Wrap highlighted text in &lt;span&gt;.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 2,
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_cb_projects_index_intro",
+      "label": "Intro",
+      "name": "intro",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "Optional short standfirst, shown beside the headline.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_cb_projects_index_show_filters",
+      "label": "Show filter bar",
+      "name": "show_filters",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Filter buttons are built from the Project Category terms that are actually in use.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 1,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    },
+    {
+      "key": "field_cb_projects_index_posts_per_page",
+      "label": "Maximum projects",
+      "name": "posts_per_page",
+      "aria-label": "",
+      "type": "number",
+      "instructions": "Leave empty or 0 to show every project.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "min": 0,
+      "max": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "step": 1,
+      "prepend": "",
+      "append": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-projects-index"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

@@ -19,6 +19,23 @@ function acf_blocks() {
 
 		acf_register_block_type(
 			array(
+				'name'            => 'cb_projects_index',
+				'title'           => __( 'CB Projects Index' ),
+				'category'        => 'layout',
+				'icon'            => 'grid-view',
+				'render_template' => 'blocks/cb-projects-index.php',
+				'mode'            => 'edit',
+				'supports'        => array(
+					'mode'      => false,
+					'anchor'    => true,
+					'className' => true,
+					'align'     => true,
+				),
+			)
+		);
+
+		acf_register_block_type(
+			array(
 				'name'            => 'cb_heading',
 				'title'           => __( 'CB Heading' ),
 				'category'        => 'layout',

@@ -25838,6 +25838,162 @@ input, select, textarea {
   font-style: italic;
 }
 
+/* =========================
+   PROJECTS INDEX
+   Filterable card grid of every case study.
+   ========================= */
+.projects-index {
+  padding-block: clamp(4.5rem, 9vw, 6.875rem);
+  background: var(--col-white);
+}
+.projects-index-header {
+  margin-block-end: 2.5rem;
+}
+.projects-index-headline {
+  color: var(--col-navy);
+}
+.projects-index-headline > span {
+  color: var(--col-orange);
+  font-style: italic;
+}
+.projects-index-intro {
+  color: var(--col-muted);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+}
+.projects-index-intro p:last-child {
+  margin-block-end: 0;
+}
+.projects-index-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-block-end: 2.5rem;
+  padding-block-end: 2rem;
+  border-block-end: 1px solid var(--col-light-border);
+}
+.projects-index-filter {
+  padding: 0.625rem 1.25rem;
+  border: 1px solid var(--col-light-border);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--col-navy);
+  font-size: var(--fs-body-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.projects-index-filter:hover, .projects-index-filter:focus-visible {
+  border-color: var(--col-navy);
+  background: var(--col-section-bg);
+}
+.projects-index-filter.is-active {
+  border-color: var(--col-navy);
+  background: var(--col-navy);
+  color: var(--col-white);
+}
+.projects-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 1100px) {
+  .projects-index-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .projects-index-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.projects-index-empty {
+  margin-block: 2.5rem 0;
+  color: var(--col-muted);
+  font-size: var(--fs-body-sm);
+  text-align: center;
+}
+
+.projects-index-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--col-white);
+  border: 1px solid var(--col-light-border);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.projects-index-card-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--col-navy);
+}
+.projects-index-card-img {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 16/10;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+.projects-index-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 30, 66, 0.55) 0%, rgba(0, 30, 66, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.projects-index-card-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+.projects-index-card-meta {
+  margin-block-end: 0.5rem;
+  color: var(--col-orange);
+  font-size: var(--fs-nano);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: var(--tt-upper);
+}
+.projects-index-card-title {
+  margin-block-end: 0;
+  color: var(--col-navy);
+  font-size: var(--fs-card-title);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-title);
+  letter-spacing: var(--ls-tight);
+  text-wrap: pretty;
+}
+.projects-index-card:hover, .projects-index-card:focus-visible {
+  box-shadow: 0 1.25rem 2.75rem rgba(0, 60, 130, 0.12);
+  transform: translateY(-3px);
+}
+.projects-index-card:hover .projects-index-card-img, .projects-index-card:focus-visible .projects-index-card-img {
+  transform: scale(1.06);
+}
+.projects-index-card:hover .projects-index-card-overlay, .projects-index-card:focus-visible .projects-index-card-overlay {
+  opacity: 1;
+}
+.projects-index-card:hover .projects-index-card-title, .projects-index-card:focus-visible .projects-index-card-title {
+  color: var(--col-orange);
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-index-card {
+    transition: none;
+  }
+  .projects-index-card:hover, .projects-index-card:focus-visible {
+    transform: none;
+  }
+  .projects-index-card:hover .projects-index-card-img, .projects-index-card:focus-visible .projects-index-card-img {
+    transform: none;
+  }
+  .projects-index-card .projects-index-card-img,
+  .projects-index-card .projects-index-card-overlay {
+    transition: none;
+  }
+}
+
 html {
   scrollbar-gutter: stable;
 }
