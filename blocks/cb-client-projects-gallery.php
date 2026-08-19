@@ -27,8 +27,17 @@ $headline_allowed = array(
 	'br'   => array(),
 );
 
+// Named apart from the per-tile $classes reused inside the loops below.
+$section_classes = array( 'client-gallery' );
+
+if ( ! empty( $block['className'] ) ) {
+	$section_classes[] = $block['className'];
+}
+
+$anchor = ! empty( $block['anchor'] ) ? ' id="' . esc_attr( $block['anchor'] ) . '"' : '';
+
 ?>
-<section class="client-gallery">
+<section class="<?= esc_attr( implode( ' ', $section_classes ) ); ?>"<?= wp_kses_post( $anchor ); ?>>
 	<div class="container">
 		<?php
 		if ( $eyebrow ) {
@@ -89,6 +98,7 @@ $headline_allowed = array(
 					$pos      = $i % 5;
 					$row_base = $group * 3 + 1;
 					$classes  = array( 'client-gallery-item' );
+					$style    = '';
 
 					if ( 0 === $group % 2 ) {
 						// Pattern A: large block left, two stacked right, then wide + single.
