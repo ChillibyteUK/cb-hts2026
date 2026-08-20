@@ -97,13 +97,18 @@
     }
   }
 
-  // DISABLED UNTIL PAGES ARE BUILT OUT
-  // // Active / current page
-  // .current-menu-item > .nav-link,
-  // .current-menu-parent > .nav-link,
-  // .current-menu-ancestor > .nav-link {
-  //   color: var(--col-orange);
-  // }
+  // Active / current page
+  .navbar-nav {
+    .current-menu-item > .nav-link,
+    .current-menu-parent > .nav-link,
+    .current-menu-ancestor > .nav-link,
+    .current_page_item > .nav-link,
+    .current_page_parent > .nav-link,
+    .current_page_ancestor > .nav-link,
+    .nav-link.active {
+      color: var(--col-orange);
+    }
+  }
 
   // Compact CTA buttons in the navbar context
   .nav-cta .btn {

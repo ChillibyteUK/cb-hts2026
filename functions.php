@@ -254,3 +254,59 @@ function cb_render_primary_nav_menu_divider( $item_output, $item, $depth, $args 
 	return '<span class="dropdown-divider-label">' . esc_html( $item->title ) . '</span>';
 }
 add_filter( 'walker_nav_menu_start_el', 'cb_render_primary_nav_menu_divider', 10, 4 );
+
+/**
+ * Maps custom post types to the menu page that acts as their parent.
+ *
+ * These CPTs have no archive, and their menu entries point at ordinary pages,
+ * so WordPress cannot infer the relationship and adds no current-* class when
+ * viewing a single. Keys are post types, values are page paths.
+ *
+ * @return array<string, string>
+ */
+function cb_nav_cpt_parent_pages() {
+	return apply_filters(
+		'cb_nav_cpt_parent_pages',
+		array(
+			'product' => 'products',
+			'project' => 'projects',
+		)
+	);
+}
+
+/**
+ * Marks the parent menu page as current when viewing a CPT single.
+ *
+ * @param array    $classes Menu item classes.
+ * @param WP_Post  $item    Menu item data object.
+ * @param stdClass $args    An object of wp_nav_menu() arguments.
+ * @return array
+ */
+function cb_nav_highlight_cpt_parent( $classes, $item, $args ) {
+	if ( ! isset( $args->theme_location ) || 'primary_nav' !== $args->theme_location ) {
+		return $classes;
+	}
+
+	if ( ! is_singular() || 'page' !== $item->object ) {
+		return $classes;
+	}
+
+	$map       = cb_nav_cpt_parent_pages();
+	$post_type = get_post_type();
+
+	if ( ! isset( $map[ $post_type ] ) ) {
+		return $classes;
+	}
+
+	$parent = get_page_by_path( $map[ $post_type ] );
+
+	if ( ! $parent || (int) $item->object_id !== (int) $parent->ID ) {
+		return $classes;
+	}
+
+	$classes[] = 'current-menu-parent';
+	$classes[] = 'current_page_parent';
+
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'cb_nav_highlight_cpt_parent', 10, 3 );
