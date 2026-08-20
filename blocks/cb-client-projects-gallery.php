@@ -34,10 +34,12 @@ if ( ! empty( $block['className'] ) ) {
 	$section_classes[] = $block['className'];
 }
 
-$anchor = ! empty( $block['anchor'] ) ? ' id="' . esc_attr( $block['anchor'] ) . '"' : '';
+// Falls back to 'gallery' so "View the gallery" links work without the editor
+// having to set an anchor on every case study.
+$anchor = ! empty( $block['anchor'] ) ? $block['anchor'] : 'gallery';
 
 ?>
-<section class="<?= esc_attr( implode( ' ', $section_classes ) ); ?>"<?= wp_kses_post( $anchor ); ?>>
+<section class="<?= esc_attr( implode( ' ', $section_classes ) ); ?>" id="<?= esc_attr( $anchor ); ?>">
 	<div class="container">
 		<?php
 		if ( $eyebrow ) {

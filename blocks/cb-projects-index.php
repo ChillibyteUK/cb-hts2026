@@ -27,8 +27,8 @@ $projects = new WP_Query(
 	array(
 		'post_type'      => 'project',
 		'posts_per_page' => $max_projects > 0 ? $max_projects : -1,
-		'orderby'        => 'menu_order date',
-		'order'          => 'ASC',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
 		'no_found_rows'  => true,
 	)
 );
