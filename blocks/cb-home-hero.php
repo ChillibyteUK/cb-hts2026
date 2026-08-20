@@ -178,7 +178,6 @@ if ( ! empty( $block['align'] ) ) {
 </div>
 </section>
 
-<?php if ( ! cb_is_block_preview() ) : ?>
 <?php if ( $image ) : ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -217,5 +216,4 @@ document.addEventListener('DOMContentLoaded', function () {
 	onScroll();
 });
 </script>
-<?php endif; ?>
 <?php endif; ?>

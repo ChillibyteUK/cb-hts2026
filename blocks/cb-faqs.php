@@ -149,7 +149,6 @@ $accordion_id = wp_unique_id( 'faq-accordion-' );
 	</div>
 </section>
 
-<?php if ( ! cb_is_block_preview() ) : ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 	if (
@@ -185,4 +184,3 @@ document.addEventListener('DOMContentLoaded', function () {
 	observer.observe(section);
 });
 </script>
-<?php endif; ?>
