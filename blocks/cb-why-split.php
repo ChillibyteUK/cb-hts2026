@@ -117,6 +117,7 @@ $br_allowed = array(
 </div>
 </section>
 
+<?php if ( ! cb_is_block_preview() ) : ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 	if (
@@ -152,3 +153,4 @@ document.addEventListener('DOMContentLoaded', function () {
 	observer.observe(section);
 });
 </script>
+<?php endif; ?>

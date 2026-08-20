@@ -105,6 +105,7 @@ $headline_allowed = array(
 	</div>
 </section>
 
+<?php if ( ! cb_is_block_preview() ) : ?>
 <?php if ( ! empty( $image['ID'] ) ) : ?>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -139,4 +140,5 @@ document.addEventListener('DOMContentLoaded', function () {
 	onScroll();
 });
 </script>
+<?php endif; ?>
 <?php endif; ?>
