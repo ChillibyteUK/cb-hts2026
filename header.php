@@ -162,8 +162,8 @@ if ( session_status() === PHP_SESSION_NONE ) {
 				?>
 
 				<div class="nav-cta d-flex flex-column flex-xl-row align-items-stretch align-items-xl-center gap-2 mt-3 mt-lg-0">
-					<a href="#configurator" class="btn btn-outline-dark">Start Designing</a>
-					<a href="#contact" class="btn btn-primary">Get an Estimate</a>
+					<a href="/configurator/" class="btn btn-outline-dark">Start Designing</a>
+					<a href="/contact/" class="btn btn-primary">Get an Estimate</a>
 				</div>
 			</div>
 		</div>
