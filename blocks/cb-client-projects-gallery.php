@@ -58,7 +58,7 @@ $anchor = ! empty( $block['anchor'] ) ? $block['anchor'] : 'gallery';
 				}
 				?>
 			</div>
-			<div class="col-md-4 offset-md-2">
+			<div class="col-md-5 offset-md-1">
 			<?php
 			if ( $intro ) {
 				?>
