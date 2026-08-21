@@ -92,12 +92,31 @@ $br_allowed = array(
 				$ext  = strtoupper( pathinfo( $file['url'], PATHINFO_EXTENSION ) );
 				$size = ! empty( $file['filesize'] ) ? size_format( $file['filesize'] ) : '';
 				$spec = array_filter( array( $ext, $size ) );
+
+				// PDFs get a page-one cover image once Imagick has generated one;
+				// anything without a preview falls back to the extension badge.
+				$cover = '';
+
+				if ( ! empty( $file['ID'] ) ) {
+					$cover = wp_get_attachment_image(
+						$file['ID'],
+						'thumbnail',
+						false,
+						array(
+							'class'   => 'downloads-item-cover',
+							'alt'     => '',
+							'loading' => 'lazy',
+						)
+					);
+				}
 				?>
 			<li class="downloads-item">
 				<a class="downloads-link" href="<?= esc_url( $file['url'] ); ?>" download>
-					<span class="downloads-item-icon" aria-hidden="true">
+					<span class="downloads-item-icon<?= $cover ? ' downloads-item-icon--cover' : ''; ?>" aria-hidden="true">
 						<?php
-						if ( $ext ) {
+						if ( $cover ) {
+							echo wp_kses_post( $cover );
+						} elseif ( $ext ) {
 							?>
 						<span class="downloads-item-ext"><?= esc_html( $ext ); ?></span>
 							<?php

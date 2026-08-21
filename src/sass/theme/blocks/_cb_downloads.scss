@@ -41,11 +41,15 @@
   }
 
   &-link {
+    --downloads-pad-y: clamp(0.875rem, 1.5vw, 1.125rem);
+    --downloads-pad-x: clamp(1rem, 2vw, 1.25rem);
+
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: stretch;
+    gap: 0;
     block-size: 100%;
-    padding: clamp(0.875rem, 1.5vw, 1.125rem) clamp(1rem, 2vw, 1.25rem);
+    padding: 0;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
     transition:
@@ -61,6 +65,10 @@
         background: var(--col-orange);
         color: var(--col-white);
         border-color: var(--col-orange);
+
+        &--cover {
+          background: var(--col-white);
+        }
       }
 
       .downloads-item-meta,
@@ -75,12 +83,15 @@
     }
   }
 
+  // Extension badge — the fallback when a file has no preview. Inset like the text.
   &-item-icon {
     flex: 0 0 auto;
     display: grid;
     place-items: center;
+    align-self: center;
     inline-size: 2.5rem;
     block-size: 2.875rem;
+    margin-inline-start: var(--downloads-pad-x);
     border: 1px solid var(--col-light-border);
     background: var(--col-navy-5);
     color: var(--col-navy);
@@ -88,6 +99,27 @@
       background var(--transition),
       border-color var(--transition),
       color var(--transition);
+
+    // A4 cover — bleeds to the card edge, full height, width follows the ratio.
+    &--cover {
+      align-self: stretch;
+      inline-size: auto;
+      block-size: auto;
+      aspect-ratio: 1 / 1.414;
+      margin-inline-start: 0;
+      border: 0;
+      border-inline-end: 1px solid var(--col-rule);
+      background: var(--col-white);
+      overflow: hidden;
+    }
+  }
+
+  &-item-cover {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
   }
 
   &-item-ext {
@@ -100,8 +132,10 @@
   &-item-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 0.25rem;
     min-inline-size: 0;
+    padding: var(--downloads-pad-y) var(--downloads-pad-x);
   }
 
   &-item-title {
@@ -127,7 +161,9 @@
 
   &-item-arrow {
     flex: 0 0 auto;
+    align-self: center;
     margin-inline-start: auto;
+    margin-inline-end: var(--downloads-pad-x);
     inline-size: 0.625rem;
     block-size: 0.625rem;
     border-inline-end: 2px solid var(--col-navy-25);
